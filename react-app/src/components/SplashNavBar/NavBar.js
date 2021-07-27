@@ -1,9 +1,10 @@
 
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import LogoutButton from './auth/LogoutButton';
+import LogoutButton from '../auth/LogoutButton';
+import LoginFormModal from './LoginFormModal';
 
-const NavBar = () => {
+const SplashNavBar = () => {
   return (
     <nav>
       <ul>
@@ -13,9 +14,9 @@ const NavBar = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink to='/login' exact={true} activeClassName='active'>
-            Login
-          </NavLink>
+          {/* <NavLink to='/login' exact={true} activeClassName='active'> */}
+            <LoginFormModal />
+          {/* </NavLink> */}
         </li>
         <li>
           <NavLink to='/sign-up' exact={true} activeClassName='active'>
@@ -35,4 +36,4 @@ const NavBar = () => {
   );
 }
 
-export default NavBar;
+export default SplashNavBar;
