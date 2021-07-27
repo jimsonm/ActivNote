@@ -13,8 +13,8 @@ const SplashNavBar = () => {
         ActivNote
       </div>
       <div className={styles.navBarButtonDiv}>
-        <LoginFormModal />
-        <SignUpFormModal />
+        <LoginFormModal buttontext={'Log In'}/>
+        <SignUpFormModal buttontext={'Sign Up'}/>
         <LogoutButton />
       </div>
       {/* <li>
