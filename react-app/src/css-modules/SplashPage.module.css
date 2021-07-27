@@ -1,0 +1,9 @@
+.hasAccountButton {
+    border: none;
+    background-color: white;
+    text-decoration: underline;
+}
+
+button:hover {
+    cursor: pointer;
+}

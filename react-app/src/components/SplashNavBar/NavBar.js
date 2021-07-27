@@ -15,6 +15,7 @@ const SplashNavBar = () => {
       <div className={styles.navBarButtonDiv}>
         <LoginFormModal />
         <SignUpFormModal />
+        <LogoutButton />
       </div>
       {/* <li>
           <NavLink to='/' exact={true} activeClassName='active'>
