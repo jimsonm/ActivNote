@@ -1,0 +1,70 @@
+.horizontalRow {
+  overflow: hidden;
+  text-align: center;
+  color: #ababab;
+}
+
+.horizontalRow:before,
+.horizontalRow:after {
+  background-color: #ababab;
+  content: "";
+  display: inline-block;
+  height: 1px;
+  position: relative;
+  vertical-align: middle;
+  width: 50%;
+}
+
+.horizontalRow:before {
+  right: 0.5em;
+  margin-left: -50%;
+}
+
+.horizontalRow:after {
+  left: 0.5em;
+  margin-right: -50%;
+}
+
+.LoginFormContainer {
+  width: 250px;
+  height: 400px;
+  padding: 50px;
+  /* display: inline-flex;
+    flex-direction: column;
+    align-items: center; */
+}
+
+.LoginFormContainer > div {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.LoginFormContainer > form > div > div {
+    margin-bottom: 10px;
+}
+
+.ContinueAndSubmitButtonsDiv {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Form {
+  display: inline-flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0;
+}
+
+.ErrorDiv {
+    margin-bottom: 0 !important;
+}
+
+.CenterText {
+  text-align: center;
+}
+
+.inputs, .buttons {
+  width: 100%;
+  box-sizing: border-box;
+}
