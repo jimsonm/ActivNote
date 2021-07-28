@@ -92,6 +92,14 @@ const LoginForm = () => {
           )}
         </div>
       </form>
+      <div className={styles.CenterText}>
+        Don't have an account?
+      </div>
+      <div className={styles.CenterText}>
+        <button className={styles.createAccountButton}>
+          Create account
+        </button>
+      </div>
     </div>
   );
 };

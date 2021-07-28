@@ -25,25 +25,19 @@
   margin-right: -50%;
 }
 
-.LoginFormContainer {
+.SignUpFormContainer {
   width: 250px;
   height: 400px;
   padding: 50px;
 }
 
-.LoginFormContainer > div {
-    margin-top: 10px;
-    margin-bottom: 10px;
+.SignUpFormContainer > div {
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
-.LoginFormContainer > form > div > div {
-    margin-bottom: 10px;
-}
-
-.ContinueAndSubmitButtonsDiv {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+.SignUpFormContainer > form > div > div {
+  margin-bottom: 10px;
 }
 
 .Form {
@@ -54,7 +48,7 @@
 }
 
 .ErrorDiv {
-    margin-bottom: 0 !important;
+  margin-bottom: 0 !important;
 }
 
 .CenterText {
@@ -68,19 +62,19 @@
 }
 
 .buttons {
-  background-color: #00a82d;
-  border-radius: 3px;
-  color: white;
-  box-shadow: none;
-  border: 0;
+    background-color: #00a82d;
+    border-radius: 3px;
+    color: white;
+    box-shadow: none;
+    border: 0;
 }
 
 .buttons:hover {
-  background-color: #008f26;
+    background-color: #008f26;
 }
 
-.createAccountButton {
-  border: none;
-  background-color: white;
-  color: #00a82d;
+.haveAccountSignInButton {
+    border: none;
+    background-color: white;
+    color: #00a82d;
 }

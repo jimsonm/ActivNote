@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { Redirect } from 'react-router-dom';
-import { signUp } from '../../../store/session'
+import { Redirect, useHistory } from 'react-router-dom';
+import { signUp, login } from '../../../store/session'
+import styles from '../../../css-modules/SignUpForm.module.css'
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
@@ -10,6 +11,7 @@ const SignUpForm = () => {
   const [repeatPassword, setRepeatPassword] = useState('');
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
+  let history = useHistory();
 
   const onSignUp = async (e) => {
     e.preventDefault();
@@ -21,8 +23,15 @@ const SignUpForm = () => {
       if (data) {
         setErrors(data)
       }
+      const id = data.id
+      history.push(`/user/${id}`)
     }
   };
+
+  const DemoLogin = async (e) => {
+    e.preventDefault();
+    await dispatch(login('demo@aa.io', 'password'))
+  }
 
   const updateEmail = (e) => {
     setEmail(e.target.value);
@@ -37,48 +46,77 @@ const SignUpForm = () => {
   };
 
   if (user) {
-    return <Redirect to='/' />;
+    return <Redirect to={`/user/${user.id}`} />;
   }
 
   return (
-    <form onSubmit={onSignUp}>
-      <div>
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))}
+    <div className={styles.SignUpFormContainer}>
+      <div className={styles.CenterText}>
+        ActivNote
       </div>
-      <div>
-        <input
-          type='text'
-          name='email'
-          onChange={updateEmail}
-          value={email}
-          placeholder='Email'
-          required={true}
-        ></input>
+      <div className={styles.CenterText}>
+        Remember everything important.
       </div>
-      <div>
-        <input
-          type='password'
-          name='password'
-          onChange={updatePassword}
-          value={password}
-          placeholder='Password'
-          required={true}
-        ></input>
+      <div className={styles.CenterText}>
+        <button className={styles.buttons} onClick={DemoLogin}>
+          Continue as Demo
+        </button>
       </div>
-      <div>
-        <input
-          type='password'
-          name='repeat_password'
-          onChange={updateRepeatPassword}
-          value={repeatPassword}
-          placeholder='Confirm Password'
-          required={true}
-        ></input>
+      <div className={styles.horizontalRow}>
+        or
       </div>
-      <button type='submit'>Sign Up</button>
-    </form>
+      <form onSubmit={onSignUp} className={styles.Form}>
+        <div className={styles.CenterText}>
+          <div className={styles.ErrorDiv}>
+            {errors.map((error, ind) => (
+              <div key={ind}>{error}</div>
+            ))}
+          </div>
+          <div>
+            <input
+              type='text'
+              name='email'
+              onChange={updateEmail}
+              value={email}
+              placeholder='Email'
+              required={true}
+              className={styles.inputs}
+            ></input>
+          </div>
+          <div>
+            <input
+              type='password'
+              name='password'
+              onChange={updatePassword}
+              value={password}
+              placeholder='Password'
+              required={true}
+              className={styles.inputs}
+            ></input>
+          </div>
+          <div>
+            <input
+              type='password'
+              name='repeat_password'
+              onChange={updateRepeatPassword}
+              value={repeatPassword}
+              placeholder='Confirm Password'
+              required={true}
+              className={styles.inputs}
+            ></input>
+          </div>
+          <button type='submit' className={styles.buttons}>Sign Up</button>
+        </div>
+      </form>
+      <div className={styles.CenterText}>
+        Already have an account?
+      </div>
+      <div className={styles.CenterText}>
+        <button className={styles.haveAccountSignInButton}>
+          Sign In
+        </button>
+      </div>
+    </div>
   );
 };
 
