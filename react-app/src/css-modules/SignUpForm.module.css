@@ -1,0 +1,80 @@
+.horizontalRow {
+  overflow: hidden;
+  text-align: center;
+  color: #ababab;
+}
+
+.horizontalRow:before,
+.horizontalRow:after {
+  background-color: #ababab;
+  content: "";
+  display: inline-block;
+  height: 1px;
+  position: relative;
+  vertical-align: middle;
+  width: 50%;
+}
+
+.horizontalRow:before {
+  right: 0.5em;
+  margin-left: -50%;
+}
+
+.horizontalRow:after {
+  left: 0.5em;
+  margin-right: -50%;
+}
+
+.SignUpFormContainer {
+  width: 250px;
+  height: 400px;
+  padding: 50px;
+}
+
+.SignUpFormContainer > div {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.SignUpFormContainer > form > div > div {
+  margin-bottom: 10px;
+}
+
+.Form {
+  display: inline-flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0;
+}
+
+.ErrorDiv {
+  margin-bottom: 0 !important;
+}
+
+.CenterText {
+  text-align: center;
+}
+
+.inputs,
+.buttons {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.buttons {
+    background-color: #00a82d;
+    border-radius: 3px;
+    color: white;
+    box-shadow: none;
+    border: 0;
+}
+
+.buttons:hover {
+    background-color: #008f26;
+}
+
+.haveAccountSignInButton {
+    border: none;
+    background-color: white;
+    color: #00a82d;
+}
