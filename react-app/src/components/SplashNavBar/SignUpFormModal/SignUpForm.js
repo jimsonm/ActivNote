@@ -26,7 +26,9 @@ const SignUpForm = () => {
         setErrors(data)
       }
       const id = data.id
+      if (id) {
       history.push(`/user/${id}`)
+      }
     }
   };
 
