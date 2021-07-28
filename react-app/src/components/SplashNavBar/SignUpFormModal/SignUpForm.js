@@ -3,12 +3,14 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Redirect, useHistory } from 'react-router-dom';
 import { signUp, login } from '../../../store/session'
 import styles from '../../../css-modules/SignUpForm.module.css'
+import LoginForm from '../LoginFormModal/LoginForm';
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
+  const [showLoginForm, setShowLoginForm] = useState(false);
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
   let history = useHistory();
@@ -27,6 +29,10 @@ const SignUpForm = () => {
       history.push(`/user/${id}`)
     }
   };
+
+  const signIn = () => {
+    setShowLoginForm(true)
+  }
 
   const DemoLogin = async (e) => {
     e.preventDefault();
@@ -49,7 +55,10 @@ const SignUpForm = () => {
     return <Redirect to={`/user/${user.id}`} />;
   }
 
-  return (
+  if (showLoginForm) {
+    return <LoginForm />
+  }
+  else return (
     <div className={styles.SignUpFormContainer}>
       <div className={styles.CenterText}>
         ActivNote
@@ -112,7 +121,7 @@ const SignUpForm = () => {
         Already have an account?
       </div>
       <div className={styles.CenterText}>
-        <button className={styles.haveAccountSignInButton}>
+        <button className={styles.haveAccountSignInButton} onClick={signIn}>
           Sign In
         </button>
       </div>

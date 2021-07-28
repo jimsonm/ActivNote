@@ -2,7 +2,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux'
 import { NavLink, useHistory } from 'react-router-dom';
-import LogoutButton from '../auth/LogoutButton';
+// import LogoutButton from '../auth/LogoutButton';
 import LoginFormModal from './LoginFormModal';
 import SignUpFormModal from './SignUpFormModal';
 import styles from '../../css-modules/SplashPageNavBar.module.css'
@@ -24,24 +24,16 @@ const SplashNavBar = () => {
         ActivNote
       </div>
       <div className={styles.navBarButtonDiv}>
-        <button onClick={DemoLogin}>Demo</button>
-        <SignUpFormModal buttontext={'Sign Up'}/>
-        <LoginFormModal buttontext={'Login'}/>
-        <LogoutButton />
+        <div className={styles.button}>
+          <button onClick={DemoLogin} className={styles.demoButton}>Demo</button>
+        </div>
+        {/* <div className={styles.button}>
+          <SignUpFormModal buttontext={'Sign Up'} />
+        </div> */}
+        <div className={styles.button}>
+          <LoginFormModal buttontext={'Login'} />
+        </div>
       </div>
-      {/* <li>
-          <NavLink to='/' exact={true} activeClassName='active'>
-            Home
-          </NavLink>
-        </li> */}
-      {/* <li>
-          <NavLink to='/users' exact={true} activeClassName='active'>
-            Users
-          </NavLink>
-        </li>
-        <li>
-          <LogoutButton />
-        </li> */}
     </nav>
   );
 }

@@ -5,3 +5,19 @@
     width: 100%;
     height: 100%;
 }
+
+.navBarButtonDiv {
+    display: inline-flex;
+}
+
+.button {
+    margin: 10px;
+}
+
+.demoButton {
+    background-color: white;
+    box-shadow: none;
+    color: #00a82d;
+    border: 2px solid #00a82d;
+    border-radius: 3px;
+}

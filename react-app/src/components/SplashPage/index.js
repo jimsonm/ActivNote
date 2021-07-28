@@ -7,7 +7,7 @@ import LoginForm from '../SplashNavBar/LoginFormModal/LoginForm';
 function SplashPage() {
     const [showModal, setShowModal] = useState(false);
     return (
-        <>
+        <div className={styles.Centered}>
             <div>
                 Tame your work, organize your life
             </div>
@@ -25,7 +25,7 @@ function SplashPage() {
                     </Modal>
                 )}
             </div>
-        </>
+        </div>
     )
 }
 

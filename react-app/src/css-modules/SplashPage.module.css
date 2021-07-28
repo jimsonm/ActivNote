@@ -7,3 +7,10 @@
 button:hover {
     cursor: pointer;
 }
+
+.Centered {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}

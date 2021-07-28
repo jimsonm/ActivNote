@@ -3,12 +3,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../../store/session'
 import styles from '../../../css-modules/LoginForm.module.css'
+import SignUpForm from '../SignUpFormModal/SignUpForm';
 
 const LoginForm = () => {
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPasswordField, setShowPasswordField] = useState(false);
+  const [showSignUpForm, setShowSignUpForm] = useState(false);
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
@@ -19,6 +21,10 @@ const LoginForm = () => {
       setErrors(data);
     }
   };
+
+  const signUp = () => {
+    setShowSignUpForm(true)
+  }
 
   const DemoLogin = async (e) => {
     e.preventDefault();
@@ -39,7 +45,10 @@ const LoginForm = () => {
     return <Redirect to={`/user/${userId}`} />;
   }
 
-  return (
+  if (showSignUpForm) {
+    return <SignUpForm />
+  }
+  else return (
     <div className={styles.LoginFormContainer}>
       <div className={styles.CenterText}>
         ActivNote
@@ -96,7 +105,7 @@ const LoginForm = () => {
         Don't have an account?
       </div>
       <div className={styles.CenterText}>
-        <button className={styles.createAccountButton}>
+        <button className={styles.createAccountButton} onClick={signUp}>
           Create account
         </button>
       </div>
