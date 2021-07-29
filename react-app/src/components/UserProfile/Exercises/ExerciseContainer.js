@@ -25,14 +25,6 @@ function ExerciseContainer() {
 
     return (
         <div className={styles.ExerciseContainer}>
-            {/* <div className={styles.NavBar}>
-                <NavLink to={`/user/${userId}`} exact={true}>
-                    Home
-                </NavLink>
-                <NavLink to={`/user/${userId}/exercises`} exact={true}>
-                    Exercises
-                </NavLink>
-            </div> */}
             <NavBar />
             <div className={styles.ExerciseNames}>
                 <div>
@@ -40,7 +32,7 @@ function ExerciseContainer() {
                 </div>
                 <div>
                     {exercises.map((exercise) => (
-                        <div onClick={() => displayDetails(exercise.id)} key={exercise.id}>
+                        <div onClick={() => displayDetails(exercise.id)} key={exercise.id} className={styles.exerciseNames}>
                             {exercise.exercise_name}
                         </div>
                     ))}

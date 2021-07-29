@@ -1,14 +1,18 @@
 .alignRight {
-    text-align: right;
+  text-align: right;
 }
 
 input {
-    width: 100%;
+  width: 100%;
 }
 
-input[type=text] {
-    padding: 0;
-    font-size: 16px;
-    font-family: Times;
-    /* border:0; */
-  }
+input[type="text"] {
+  padding: 0;
+  font-size: 16px;
+  font-family: Times;
+  border: 0;
+}
+
+input:hover {
+  border: 1px solid black;
+}

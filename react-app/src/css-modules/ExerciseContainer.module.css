@@ -16,3 +16,7 @@
 .ExerciseDetails {
     width: 600px;
 }
+
+.exerciseNames:hover {
+    cursor: pointer;
+}
