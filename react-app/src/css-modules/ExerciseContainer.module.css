@@ -1,0 +1,12 @@
+.ExerciseContainer {
+    display: inline-flex;
+    width: 800px;
+}
+
+.ExerciseNames {
+    width: 200px;
+}
+
+.ExerciseDetails {
+    width: 600px;
+}
