@@ -39,17 +39,3 @@ def updateExercise(exerciseId):
     exercise.notes = data['notes']
     db.session.commit()
     return exercise.to_dict()
-
-
-# @dog_routes.route('/<int:dog_id>', methods=['PUT'])
-# def update_dog(dog_id):
-#     dog = Dog.query.get(dog_id)
-#     if dog is None:
-#         return {'message': 'No dog found'}, 404
-#     data = request.get_json()
-#     dog.name = data['name']
-#     dog.breed = data['breed']
-#     dog.age = data['age']
-#     dog.image_url = data['image_url']
-#     db.session.commit()
-#     return dog.to_dict()

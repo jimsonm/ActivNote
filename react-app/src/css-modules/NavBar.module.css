@@ -1,0 +1,5 @@
+.NavBar {
+    display: inline-flex;
+    flex-direction: column;
+    width: 200px;
+}
