@@ -1,6 +1,10 @@
 .ExerciseContainer {
     display: inline-flex;
-    width: 800px;
+    width: 1000px;
+}
+
+.NavBar {
+    width: 200px;
 }
 
 .ExerciseNames {

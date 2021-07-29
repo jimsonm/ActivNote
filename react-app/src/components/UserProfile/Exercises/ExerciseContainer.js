@@ -22,6 +22,10 @@ function ExerciseContainer() {
 
     return (
         <div className={styles.ExerciseContainer}>
+            <div className={styles.NavBar}>
+                this is the navbar
+                gnaoehfiawjoiwfjfoowei
+            </div>
             <div className={styles.ExerciseNames}>
                 <div>
                     Exercises

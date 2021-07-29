@@ -31,6 +31,35 @@ export const getExerciseById = (exerciseId) => async (dispatch) => {
     }
 }
 
+export const editExercise = (payload) => async (dispatch) => {
+    const exerciseId = payload.exerciseId
+    const userId = payload.userId
+    const response = await fetch(`/api/exercises/${exerciseId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+    })
+    if (response.ok) {
+        dispatch(getExercises(userId))
+    }
+}
+
+// export const editDog = (payload) => async (dispatch) => {
+//     const dogId = payload.dogId;
+//     const userId = payload.id;
+//     const response = await fetch(`/api/dogs/${dogId}`, {
+//         method: 'PUT',
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify(payload)
+//     })
+//     if (response.ok) {
+//         dispatch(getDogs(userId))
+//     }
+
 const initialState = {};
 
 export default function reducer(state = initialState, action) {
