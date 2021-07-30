@@ -1,9 +1,40 @@
 import { useState } from 'react';
+import styles from '../../../../css-modules/AddExercise.module.css'
+import { useParams } from 'react-router-dom'
+import { addExercise } from '../../../../store/exercise'
+import { useDispatch } from 'react-redux'
 
 function ExerciseForm() {
+    const dispatch = useDispatch();
+    const { userId } = useParams();
     const [exercise_name, setExercise_name] = useState('');
     const [calories_burned, setCalories_burned] = useState('');
     const [notes, setNotes] = useState('');
+    const [errors, setErrors] = useState([]);
+
+    const createExercise = async (e) => {
+        e.preventDefault();
+        if (calories_burned === '') {
+            const payload = {
+                exercise_name,
+                calories_burned: 0,
+                notes,
+                user_id: userId
+            }
+            await dispatch(addExercise(payload))
+        }
+        else if (typeof calories_burned !== 'number') {
+            setErrors(["Please only use integers for the calories burned per minute."])
+        } else {
+            const payload = {
+                exercise_name,
+                calories_burned,
+                notes,
+                user_id: userId
+            }
+            await dispatch(addExercise(payload))
+        }
+    }
 
     const updateExerciseName = (e) => {
         setExercise_name(e.target.value)
@@ -18,9 +49,14 @@ function ExerciseForm() {
     }
 
     return (
-        <div>
-            heres the exercise form!
-            <form>
+        <div className={styles.container}>
+            Create A New Exercise
+            <form onSubmit={createExercise} className={styles.Form}>
+                <div>
+                    {errors.map((error, ind) => (
+                        <div key={ind}>{error}</div>
+                    ))}
+                </div>
                 <input
                     name='exercise_name'
                     type='text'
@@ -32,17 +68,18 @@ function ExerciseForm() {
                 <input
                     name='calories_burned'
                     type='text'
-                    placeholder='Calories burned per minute'
+                    placeholder='Calories burned per minute, if left blank a default value of 0 will be used.'
                     value={calories_burned}
                     onChange={updateCalories}
                 />
-                <input
+                <textarea
                     name='notes'
                     type='text'
-                    placeholder='Any thoughts you might have regarding this exercise. This can include goals and things to remember.'
+                    placeholder='Any thoughts you might have regarding this exercise. This can include goals or things to remember.'
                     value={notes}
                     onChange={updateNotes}
                 />
+                <button type='submit'>Submit</button>
             </form>
         </div>
     )
