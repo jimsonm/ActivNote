@@ -45,7 +45,7 @@ function ExerciseContainer() {
                     </div>
                 )}
                 {currentExercise && selected && (
-                    <ExerciseDetails exercise={currentExercise} />
+                    <ExerciseDetails exercise={currentExercise} setCurrentExercise={setCurrentExercise} setSelected={setSelected}/>
                 )}
             </div>
         </div>
