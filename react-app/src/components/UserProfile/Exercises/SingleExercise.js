@@ -6,7 +6,6 @@ import { editExercise, deleteExercise } from '../../../store/exercise';
 
 function ExerciseDetails({ exercise, setCurrentExercise, setSelected }) {
     const currExId = exercise.id
-    // const currentExercise = useSelector(state => Object.values(state.exercise)[exercise.id - 1])
     const currentExercise = useSelector(state => state.exercise[currExId])
     const exercises = useSelector(state => Object.values(state.exercise))
     console.log(exercises)
@@ -98,7 +97,6 @@ function ExerciseDetails({ exercise, setCurrentExercise, setSelected }) {
                 <form>
                     <div className={styles.alignRight}>
                         <button onClick={updateExercise}>
-                            {/* make button submit */}
                             Save
                         </button>
                         <button onClick={cancel}>

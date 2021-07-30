@@ -4,7 +4,7 @@ import styles from '../../../../css-modules/AddModal.module.css'
 import ExerciseForm from './AddExercise';
 import WorkoutForm from './AddWorkout';
 
-function Add() {
+function Add({setShowModal}) {
     const [createExercise, setCreateExercise] = useState(false);
     const [createWorkout, setCreateWorkout] = useState(false);
     const [chosen, setChosen] = useState(false);
@@ -28,10 +28,10 @@ function Add() {
                 </>
             )}
             {createExercise && (
-                <ExerciseForm />
+                <ExerciseForm setShowModal={setShowModal}/>
             )}
             {createWorkout && (
-                <WorkoutForm />
+                <WorkoutForm setShowModal={setShowModal}/>
             )}
         </div>
     )
