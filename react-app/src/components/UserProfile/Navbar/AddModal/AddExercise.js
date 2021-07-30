@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import styles from '../../../../css-modules/AddExercise.module.css'
-import { useParams } from 'react-router-dom'
+import { useParams, useHistory } from 'react-router-dom'
 import { addExercise } from '../../../../store/exercise'
 import { useDispatch } from 'react-redux'
 
@@ -11,6 +11,7 @@ function ExerciseForm() {
     const [calories_burned, setCalories_burned] = useState('');
     const [notes, setNotes] = useState('');
     const [errors, setErrors] = useState([]);
+    let history = useHistory();
 
     const createExercise = async (e) => {
         e.preventDefault();
@@ -23,7 +24,7 @@ function ExerciseForm() {
             }
             await dispatch(addExercise(payload))
         }
-        else if (typeof calories_burned !== 'number') {
+        else if (!Number(calories_burned)) {
             setErrors(["Please only use integers for the calories burned per minute."])
         } else {
             const payload = {
@@ -32,7 +33,12 @@ function ExerciseForm() {
                 notes,
                 user_id: userId
             }
-            await dispatch(addExercise(payload))
+            const data = await dispatch(addExercise(payload))
+            console.log(data)
+            const id = data.id
+            if (id) {
+                history.push(`/user/${userId}/exercises`)
+            }
         }
     }
 

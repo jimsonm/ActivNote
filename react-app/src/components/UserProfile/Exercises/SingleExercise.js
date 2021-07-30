@@ -6,7 +6,7 @@ import { editExercise, deleteExercise } from '../../../store/exercise';
 
 function ExerciseDetails({ exercise }) {
     const currentExercise = useSelector(state => Object.values(state.exercise)[exercise.id - 1])
-    // console.log(currentExercise)
+    console.log(currentExercise)
     const { userId } = useParams();
     const dispatch = useDispatch();
     const [isForm, setIsForm] = useState(false)
@@ -15,10 +15,9 @@ function ExerciseDetails({ exercise }) {
     const [calories, setCalories] = useState(currentExercise.calories_burned)
     const [notes, setNotes] = useState(currentExercise.notes)
     const [errors, setErrors] = useState([]);
-    // console.log(exercise)
     const updateExercise = async (e) => {
         e.preventDefault();
-        if (!Number(calories)) {
+        if (!Number(calories) && calories !== 0) {
             setErrors(["Please input an integer for the calories burned/min."])
         } else {
             const payload = {
@@ -52,6 +51,14 @@ function ExerciseDetails({ exercise }) {
         dispatch(deleteExercise(payload))
     }
 
+    const editForm = async (e) => {
+        e.preventDefault();
+        setIsForm(true)
+        setName(currentExercise.exercise_name)
+        setCalories(currentExercise.calories_burned)
+        setNotes(currentExercise.notes)
+    }
+
     return (
         <div>
             {errors.map((error, ind) => (
@@ -60,7 +67,7 @@ function ExerciseDetails({ exercise }) {
             {!isForm && (
                 <div>
                     <div className={styles.alignRight}>
-                        <button onClick={() => setIsForm(true)}>
+                        <button onClick={editForm}>
                             Update
                         </button>
                         <button onClick={removeExercise}>
