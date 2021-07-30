@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from '../../../css-modules/SingleExercise.module.css';
 import { useParams } from 'react-router-dom';
-import { editExercise } from '../../../store/exercise';
+import { editExercise, deleteExercise } from '../../../store/exercise';
 
 function ExerciseDetails({ exercise }) {
     const currentExercise = useSelector(state => Object.values(state.exercise)[exercise.id - 1])
@@ -43,6 +43,15 @@ function ExerciseDetails({ exercise }) {
         setErrors([])
     }
 
+    const removeExercise = async (e) => {
+        e.preventDefault()
+        const payload = {
+            userId,
+            exerciseId
+        }
+        dispatch(deleteExercise(payload))
+    }
+
     return (
         <div>
             {errors.map((error, ind) => (
@@ -54,7 +63,7 @@ function ExerciseDetails({ exercise }) {
                         <button onClick={() => setIsForm(true)}>
                             Update
                         </button>
-                        <button>
+                        <button onClick={removeExercise}>
                             Delete
                         </button>
                     </div>

@@ -7,8 +7,8 @@ class Activity(db.Model):
     sets = db.Column(db.Integer, nullable=False)
     repetitions = db.Column(db.Integer, nullable=False)
     duration = db.Column(db.Integer, nullable=False)
-    workout_id = db.Column(db.Integer, db.ForeignKey('workouts.id'), nullable=False)
-    exercise_id = db.Column(db.Integer, db.ForeignKey('exercises.id'), nullable=False)
+    workout_id = db.Column(db.Integer, db.ForeignKey('workouts.id', ondelete="CASCADE"), nullable=False)
+    exercise_id = db.Column(db.Integer, db.ForeignKey('exercises.id', ondelete="CASCADE"), nullable=False)
 
     workout = db.relationship('Workout', back_populates='activities')
     exercise = db.relationship('Exercise', back_populates='activity')

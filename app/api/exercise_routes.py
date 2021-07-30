@@ -39,3 +39,11 @@ def updateExercise(exerciseId):
     exercise.notes = data['notes']
     db.session.commit()
     return exercise.to_dict()
+
+@exercise_routes.route('/<int:exerciseId>', methods=['DELETE'])
+@login_required
+def deleteExercise(exerciseId):
+    exercise = Exercise.query.get(exerciseId)
+    db.session.delete(exercise)
+    db.session.commit()
+    return {'message': 'Exercise removed'}

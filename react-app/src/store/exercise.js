@@ -46,6 +46,17 @@ export const editExercise = (payload) => async (dispatch) => {
     }
 }
 
+export const deleteExercise = (payload) => async (dispatch) => {
+    const exerciseId = payload.exerciseId
+    const userId = payload.userId
+    const response = await fetch(`/api/exercises/${exerciseId}`, {
+        method: 'DELETE'
+    })
+    if (response.ok) {
+        dispatch(getExercises(userId));
+    }
+}
+
 const initialState = {};
 
 export default function reducer(state = initialState, action) {

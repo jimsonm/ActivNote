@@ -10,7 +10,7 @@ class Exercise(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
     user = db.relationship('User', back_populates='exercises')
-    activity = db.relationship('Activity', back_populates='exercise', uselist=False)
+    activity = db.relationship('Activity', back_populates='exercise', uselist=False, passive_deletes=True, cascade="all, delete")
 
     def to_dict(self):
         return {
