@@ -9,7 +9,7 @@ function AddModal() {
             <button onClick={() => setShowModal(true)}>Add</button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <Add />
+                    <Add setShowModal={setShowModal}/>
                 </Modal>
             )}
         </>

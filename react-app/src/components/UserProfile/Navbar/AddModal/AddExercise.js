@@ -4,7 +4,7 @@ import { useParams, useHistory } from 'react-router-dom'
 import { addExercise } from '../../../../store/exercise'
 import { useDispatch } from 'react-redux'
 
-function ExerciseForm() {
+function ExerciseForm({setShowModal}) {
     const dispatch = useDispatch();
     const { userId } = useParams();
     const [exercise_name, setExercise_name] = useState('');
@@ -39,6 +39,7 @@ function ExerciseForm() {
             if (id) {
                 history.push(`/user/${userId}/exercises`)
             }
+            setShowModal(false)
         }
     }
 
@@ -86,6 +87,7 @@ function ExerciseForm() {
                     onChange={updateNotes}
                 />
                 <button type='submit'>Submit</button>
+                <button onClick={() => setShowModal(false)}>Cancel</button>
             </form>
         </div>
     )
