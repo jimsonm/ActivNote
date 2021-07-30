@@ -4,8 +4,12 @@ import styles from '../../../css-modules/SingleExercise.module.css';
 import { useParams } from 'react-router-dom';
 import { editExercise, deleteExercise } from '../../../store/exercise';
 
-function ExerciseDetails({ exercise }) {
-    const currentExercise = useSelector(state => Object.values(state.exercise)[exercise.id - 1])
+function ExerciseDetails({ exercise, setCurrentExercise, setSelected }) {
+    const currExId = exercise.id
+    // const currentExercise = useSelector(state => Object.values(state.exercise)[exercise.id - 1])
+    const currentExercise = useSelector(state => state.exercise[currExId])
+    const exercises = useSelector(state => Object.values(state.exercise))
+    console.log(exercises)
     console.log(currentExercise)
     const { userId } = useParams();
     const dispatch = useDispatch();
@@ -15,6 +19,7 @@ function ExerciseDetails({ exercise }) {
     const [calories, setCalories] = useState(currentExercise.calories_burned)
     const [notes, setNotes] = useState(currentExercise.notes)
     const [errors, setErrors] = useState([]);
+
     const updateExercise = async (e) => {
         e.preventDefault();
         if (!Number(calories) && calories !== 0) {
@@ -49,6 +54,8 @@ function ExerciseDetails({ exercise }) {
             exerciseId
         }
         dispatch(deleteExercise(payload))
+        setCurrentExercise(null)
+        setSelected(false)
     }
 
     const editForm = async (e) => {
@@ -123,6 +130,7 @@ function ExerciseDetails({ exercise }) {
                             type='text'
                             name='notes'
                             value={notes}
+                            placeholder='Notes about your exercise'
                             onChange={(e) => setNotes(e.target.value)}
                             className={styles.input}
                         />
