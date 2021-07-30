@@ -97,6 +97,7 @@ function ExerciseDetails({ exercise }) {
                             name='name'
                             value={name}
                             onChange={(e) => setName(e.target.value)}
+                            className={styles.input}
                         />
                     </div>
                     <div>
@@ -107,8 +108,8 @@ function ExerciseDetails({ exercise }) {
                             name='calories_burned'
                             value={calories}
                             onChange={(e) => setCalories(e.target.value)}
+                            className={styles.input}
                         />
-                        {/* Calories burned/min: {currentExercise.calories_burned} */}
                     </div>
                     <div>
                         <input
@@ -116,8 +117,8 @@ function ExerciseDetails({ exercise }) {
                             name='notes'
                             value={notes}
                             onChange={(e) => setNotes(e.target.value)}
+                            className={styles.input}
                         />
-                        {/* Notes: {currentExercise.notes} */}
                     </div>
                 </form>
             )}

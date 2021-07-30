@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, NavLink } from 'react-router-dom';
+import { useParams} from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 import NavBar from './Navbar';
 
 function User() {
   const [user, setUser] = useState({});
   const { userId } = useParams();
-  const userProfile = useSelector(state => state.session.user)
+  // const userProfile = useSelector(state => state.session.user)
 
   useEffect(() => {
     if (!userId) {
@@ -26,12 +26,6 @@ function User() {
 
   return (
     <div>
-      <div>
-        {userProfile.id}
-      </div>
-      <div>
-        {userProfile.email}
-      </div>
       <NavBar />
       <LogoutButton />
     </div>
