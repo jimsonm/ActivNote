@@ -9,7 +9,7 @@ class Workout(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
     user = db.relationship('User', back_populates='workouts')
-    activities = db.relationship('Activity', back_populates='workout')
+    activities = db.relationship('Activity', back_populates='workout', passive_deletes=True, cascade="all, delete")
     track = db.relationship('Track', back_populates='workout', uselist=False)
 
     def to_dict(self):

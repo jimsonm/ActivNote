@@ -3,10 +3,10 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import SplashNavBar from './components/SplashNavBar/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
-import UsersList from './components/UsersList';
-import User from './components/User';
+import User from './components/UserProfile';
 import { authenticate } from './store/session';
 import SplashPage from './components/SplashPage';
+import Exercises from './components/UserProfile/Exercises';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -26,11 +26,11 @@ function App() {
   return (
     <BrowserRouter>
       <Switch>
-        <ProtectedRoute path='/users' exact={true} >
-          <UsersList/>
-        </ProtectedRoute>
         <ProtectedRoute path='/user/:userId' exact={true} >
           <User />
+        </ProtectedRoute>
+        <ProtectedRoute path={`/user/:userId/exercises`} exact={true}>
+          <Exercises />
         </ProtectedRoute>
         <Route path='/' exact={true} >
           <SplashNavBar />

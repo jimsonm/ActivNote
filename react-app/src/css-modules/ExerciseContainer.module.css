@@ -1,0 +1,22 @@
+.ExerciseContainer {
+    display: inline-flex;
+    width: 1000px;
+}
+
+.NavBar {
+    display: inline-flex;
+    flex-direction: column;
+    width: 200px;
+}
+
+.ExerciseNames {
+    width: 200px;
+}
+
+.ExerciseDetails {
+    width: 600px;
+}
+
+.exerciseNames:hover {
+    cursor: pointer;
+}

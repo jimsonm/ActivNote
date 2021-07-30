@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect, useHistory } from 'react-router-dom';
-import { signUp, login } from '../../../store/session'
-import styles from '../../../css-modules/SignUpForm.module.css'
+import { signUp, login } from '../../../store/session';
+import styles from '../../../css-modules/SignUpForm.module.css';
 import LoginForm from '../LoginFormModal/LoginForm';
 
 const SignUpForm = () => {
