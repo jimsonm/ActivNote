@@ -23,6 +23,7 @@ function ExerciseForm({setShowModal}) {
                 user_id: userId
             }
             await dispatch(addExercise(payload))
+            setShowModal(false)
         }
         else if (!Number(calories_burned)) {
             setErrors(["Please only use integers for the calories burned per minute."])
