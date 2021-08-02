@@ -16,3 +16,10 @@
 .input:hover {
   border: 1px solid black;
 }
+
+.SingleExerciseContainer {
+  margin-top: 45px;
+  border: 1px gray solid;
+  border-radius: 10px;
+  padding: 10px;
+}
