@@ -12,6 +12,7 @@ function ExerciseContainer() {
     const [currentExercise, setCurrentExercise] = useState(null);
     const exercises = useSelector(state => Object.values(state.exercise))
     const [selected, setSelected] = useState(false)
+    const [isForm, setIsForm] = useState(false)
 
     useEffect(() => {
         dispatch(getExercises(userId))
@@ -21,32 +22,35 @@ function ExerciseContainer() {
         const exercise = await dispatch(getExerciseById(id))
         setCurrentExercise(exercise)
         setSelected(true)
+        setIsForm(false)
     }
 
     return (
         <div className={styles.ExerciseContainer}>
             <NavBar />
-            <div className={styles.ExerciseNames}>
-                <div>
-                    Exercises
-                </div>
-                <div>
-                    {exercises.map((exercise) => (
-                        <div onClick={() => displayDetails(exercise.id)} key={exercise.id} className={styles.exerciseNames}>
-                            {exercise.exercise_name}
-                        </div>
-                    ))}
-                </div>
-            </div>
-            <div className={styles.ExerciseDetails}>
-                {!selected && (
-                    <div>
-                        Please select an exercise to view its details.
+            <div className={styles.InnerExerciseContainer}>
+                <div className={styles.ExerciseNameContainer}>
+                    <div className={styles.title}>
+                        Exercises
                     </div>
-                )}
-                {currentExercise && selected && (
-                    <ExerciseDetails exercise={currentExercise} setCurrentExercise={setCurrentExercise} setSelected={setSelected}/>
-                )}
+                    <div>
+                        {exercises.map((exercise) => (
+                            <div onClick={() => displayDetails(exercise.id)} key={exercise.id} className={styles.exerciseNames}>
+                                {exercise.exercise_name}
+                            </div>
+                        ))}
+                    </div>
+                </div>
+                <div className={styles.ExerciseDetails}>
+                    {!selected && (
+                        <div>
+                            Please select an exercise to view its details.
+                        </div>
+                    )}
+                    {currentExercise && selected && (
+                        <ExerciseDetails exercise={currentExercise} setCurrentExercise={setCurrentExercise} setSelected={setSelected} isForm={isForm} setIsForm={setIsForm}/>
+                    )}
+                </div>
             </div>
         </div>
     )

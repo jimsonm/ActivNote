@@ -4,7 +4,7 @@ import styles from '../../../css-modules/SingleExercise.module.css';
 import { useParams } from 'react-router-dom';
 import { editExercise, deleteExercise } from '../../../store/exercise';
 
-function ExerciseDetails({ exercise, setCurrentExercise, setSelected }) {
+function ExerciseDetails({ exercise, setCurrentExercise, setSelected, isForm, setIsForm }) {
     const currExId = exercise.id
     const currentExercise = useSelector(state => state.exercise[currExId])
     const exercises = useSelector(state => Object.values(state.exercise))
@@ -12,7 +12,7 @@ function ExerciseDetails({ exercise, setCurrentExercise, setSelected }) {
     console.log(currentExercise)
     const { userId } = useParams();
     const dispatch = useDispatch();
-    const [isForm, setIsForm] = useState(false)
+    // const [isForm, setIsForm] = useState(false)
     const exerciseId = currentExercise.id
     const [name, setName] = useState(currentExercise.exercise_name)
     const [calories, setCalories] = useState(currentExercise.calories_burned)
@@ -66,10 +66,7 @@ function ExerciseDetails({ exercise, setCurrentExercise, setSelected }) {
     }
 
     return (
-        <div>
-            {errors.map((error, ind) => (
-                <div key={ind}>{error}</div>
-            ))}
+        <div className={styles.SingleExerciseContainer}>
             {!isForm && (
                 <div>
                     <div className={styles.alignRight}>
@@ -123,6 +120,9 @@ function ExerciseDetails({ exercise, setCurrentExercise, setSelected }) {
                             className={styles.input}
                         />
                     </div>
+                    {errors.map((error, ind) => (
+                        <div key={ind}>{error}</div>
+                    ))}
                     <div>
                         <input
                             type='text'
