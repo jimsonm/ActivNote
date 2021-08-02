@@ -1,6 +1,6 @@
 .ExerciseContainer {
     display: inline-flex;
-    width: 1000px;
+    width: 100%;
 }
 
 .NavBar {
@@ -10,22 +10,18 @@
 }
 
 .ExerciseNameContainer {
-    width: 200px;
+    width: 300px;
 }
 
 .InnerExerciseContainer {
     display: inline-flex;
     border: 1px gray solid;
     border-radius: 10px;
+    width: 100%;
 }
 
-/* .ExerciseNameContainer,
 .ExerciseDetails {
-    background-color: grey;
-} */
-
-.ExerciseDetails {
-    width: 600px;
+    width: 100%;
 }
 
 .exerciseNames:hover {
