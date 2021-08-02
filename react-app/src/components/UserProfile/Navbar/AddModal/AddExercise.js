@@ -72,6 +72,7 @@ function ExerciseForm({setShowModal}) {
                     value={exercise_name}
                     required={true}
                     onChange={updateExerciseName}
+                    className={styles.input}
                 />
                 <input
                     name='calories_burned'
@@ -79,16 +80,19 @@ function ExerciseForm({setShowModal}) {
                     placeholder='Calories burned per minute, if left blank a default value of 0 will be used.'
                     value={calories_burned}
                     onChange={updateCalories}
+                    className={styles.input}
                 />
                 <textarea
                     name='notes'
+                    rows={3}
                     type='text'
-                    placeholder='Any thoughts you might have regarding this exercise. This can include goals or things to remember.'
+                    placeholder='Any thoughts you might have regarding this exercise. This can include goals or feelings about the exercise.'
                     value={notes}
                     onChange={updateNotes}
+                    className={styles.input}
                 />
-                <button type='submit'>Submit</button>
-                <button onClick={() => setShowModal(false)}>Cancel</button>
+                <button type='submit' className={styles.button}>Submit</button>
+                <button onClick={() => setShowModal(false)} className={styles.button}>Cancel</button>
             </form>
         </div>
     )

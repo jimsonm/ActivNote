@@ -38,6 +38,11 @@ function NavBar() {
             <NavLink to={`/user/${userId}/exercises`} exact={true}>
                 Exercises
             </NavLink>
+            <NavLink to={`/user/${userId}/workouts`} exact={true}>
+                Workouts
+            </NavLink>
+            <a href='https://github.com/jimsonm/ActivNote' target='_blank' rel='noopener noreferrer'>Github</a>
+            <a href='https://www.linkedin.com/in/jimson-ma-462197213/' target='_blank' rel='noopener noreferrer'>Linkedin</a>
         </div>
     )
 }

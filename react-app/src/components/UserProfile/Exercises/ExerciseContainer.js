@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, NavLink } from 'react-router-dom';
 import { getExercises, getExerciseById } from '../../../store/exercise';
-import ExerciseDetails from './SingleExercise';
+import ExerciseDetails from './ExerciseDetails';
 import styles from '../../../css-modules/ExerciseContainer.module.css';
 import NavBar from '../Navbar';
 
@@ -34,11 +34,13 @@ function ExerciseContainer() {
                         Exercises
                     </div>
                     <div>
+                    <div className={styles.individualExerciseContainer}>
                         {exercises.map((exercise) => (
                             <div onClick={() => displayDetails(exercise.id)} key={exercise.id} className={styles.exerciseNames}>
                                 {exercise.exercise_name}
                             </div>
                         ))}
+                    </div>
                     </div>
                 </div>
                 <div className={styles.ExerciseDetails}>

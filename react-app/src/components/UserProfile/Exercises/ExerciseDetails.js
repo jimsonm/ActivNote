@@ -7,12 +7,11 @@ import { editExercise, deleteExercise } from '../../../store/exercise';
 function ExerciseDetails({ exercise, setCurrentExercise, setSelected, isForm, setIsForm }) {
     const currExId = exercise.id
     const currentExercise = useSelector(state => state.exercise[currExId])
-    const exercises = useSelector(state => Object.values(state.exercise))
-    console.log(exercises)
+    // const exercises = useSelector(state => Object.values(state.exercise))
+    // console.log(exercises)
     console.log(currentExercise)
     const { userId } = useParams();
     const dispatch = useDispatch();
-    // const [isForm, setIsForm] = useState(false)
     const exerciseId = currentExercise.id
     const [name, setName] = useState(currentExercise.exercise_name)
     const [calories, setCalories] = useState(currentExercise.calories_burned)
@@ -70,7 +69,7 @@ function ExerciseDetails({ exercise, setCurrentExercise, setSelected, isForm, se
             {!isForm && (
                 <div>
                     <div className={styles.title}>
-                        <div/>
+                        <div />
                         <div>
                             <button onClick={editForm} className={styles.button}>
                                 Update
@@ -81,14 +80,16 @@ function ExerciseDetails({ exercise, setCurrentExercise, setSelected, isForm, se
                         </div>
                     </div>
                     <div>
-                            {currentExercise.exercise_name}
-                        </div>
+                        {currentExercise.exercise_name}
+                    </div>
                     <div>
                         Calories burned/min
                         <br />
                         {currentExercise.calories_burned}
                     </div>
                     <div>
+                        Notes
+                        <br />
                         {currentExercise.notes}
                     </div>
                 </div>
@@ -96,7 +97,7 @@ function ExerciseDetails({ exercise, setCurrentExercise, setSelected, isForm, se
             {isForm && (
                 <form>
                     <div className={styles.title}>
-                        <div/>
+                        <div />
                         <div>
                             <button onClick={updateExercise} className={styles.button}>
                                 Save
@@ -130,6 +131,8 @@ function ExerciseDetails({ exercise, setCurrentExercise, setSelected, isForm, se
                         <div key={ind}>{error}</div>
                     ))}
                     <div>
+                        Notes
+                        <br />
                         <input
                             type='text'
                             name='notes'
