@@ -69,17 +69,20 @@ function ExerciseDetails({ exercise, setCurrentExercise, setSelected, isForm, se
         <div className={styles.SingleExerciseContainer}>
             {!isForm && (
                 <div>
-                    <div className={styles.alignRight}>
-                        <button onClick={editForm}>
-                            Update
-                        </button>
-                        <button onClick={removeExercise}>
-                            Delete
-                        </button>
+                    <div className={styles.title}>
+                        <div/>
+                        <div>
+                            <button onClick={editForm} className={styles.button}>
+                                Update
+                            </button>
+                            <button onClick={removeExercise} className={styles.button}>
+                                Delete
+                            </button>
+                        </div>
                     </div>
                     <div>
-                        {currentExercise.exercise_name}
-                    </div>
+                            {currentExercise.exercise_name}
+                        </div>
                     <div>
                         Calories burned/min
                         <br />
@@ -92,13 +95,16 @@ function ExerciseDetails({ exercise, setCurrentExercise, setSelected, isForm, se
             )}
             {isForm && (
                 <form>
-                    <div className={styles.alignRight}>
-                        <button onClick={updateExercise}>
-                            Save
-                        </button>
-                        <button onClick={cancel}>
-                            Cancel
-                        </button>
+                    <div className={styles.title}>
+                        <div/>
+                        <div>
+                            <button onClick={updateExercise} className={styles.button}>
+                                Save
+                            </button>
+                            <button onClick={cancel} className={styles.button}>
+                                Cancel
+                            </button>
+                        </div>
                     </div>
                     <div>
                         <input
