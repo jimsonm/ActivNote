@@ -34,11 +34,13 @@ function ExerciseContainer() {
                         Exercises
                     </div>
                     <div>
+                    <div className={styles.individualExerciseContainer}>
                         {exercises.map((exercise) => (
                             <div onClick={() => displayDetails(exercise.id)} key={exercise.id} className={styles.exerciseNames}>
                                 {exercise.exercise_name}
                             </div>
                         ))}
+                    </div>
                     </div>
                 </div>
                 <div className={styles.ExerciseDetails}>
