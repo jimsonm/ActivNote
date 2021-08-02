@@ -23,8 +23,8 @@ function Add({setShowModal}) {
         <div className={styles.container}>
             {!chosen && (
                 <>
-                    <button onClick={openExerciseForm}>Exercise</button>
-                    <button onClick={openWorkoutForm}>Workout</button>
+                    <button onClick={openExerciseForm} className={styles.button}>Exercise</button>
+                    <button onClick={openWorkoutForm} className={styles.button}>Workout</button>
                 </>
             )}
             {createExercise && (
