@@ -19,5 +19,6 @@ class Activity(db.Model):
             'sets': self.sets,
             'repetitions': self.repetitions,
             'duration': self.duration,
+            'workout_id': self.workout_id,
             'exercise_id': self.exercise_id
         }
