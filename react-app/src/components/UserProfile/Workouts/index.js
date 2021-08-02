@@ -1,10 +1,10 @@
-// import ExerciseContainer from './ExerciseContainer';
+import WorkoutContainer from "./WorkoutContainer";
 
 function Workouts() {
 
     return (
         <div>
-            this is workouts!
+            <WorkoutContainer />
         </div>
     )
 }

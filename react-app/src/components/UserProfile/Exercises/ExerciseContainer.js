@@ -11,6 +11,7 @@ function ExerciseContainer() {
     const { userId } = useParams();
     const [currentExercise, setCurrentExercise] = useState(null);
     const exercises = useSelector(state => Object.values(state.exercise))
+    console.log(exercises)
     const [selected, setSelected] = useState(false)
     const [isForm, setIsForm] = useState(false)
 
@@ -20,9 +21,9 @@ function ExerciseContainer() {
 
     const displayDetails = async (id) => {
         const exercise = await dispatch(getExerciseById(id))
-        setCurrentExercise(exercise)
-        setSelected(true)
-        setIsForm(false)
+        await setCurrentExercise(exercise)
+        await setSelected(true)
+        await setIsForm(false)
     }
 
     return (
@@ -38,6 +39,8 @@ function ExerciseContainer() {
                         {exercises.map((exercise) => (
                             <div onClick={() => displayDetails(exercise.id)} key={exercise.id} className={styles.exerciseNames}>
                                 {exercise.exercise_name}
+                                <br/>
+                                {exercise.notes}
                             </div>
                         ))}
                     </div>
@@ -56,6 +59,7 @@ function ExerciseContainer() {
             </div>
         </div>
     )
+
 }
 
 export default ExerciseContainer;

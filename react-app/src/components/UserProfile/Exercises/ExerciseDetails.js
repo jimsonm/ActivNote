@@ -133,7 +133,7 @@ function ExerciseDetails({ exercise, setCurrentExercise, setSelected, isForm, se
                     <div>
                         Notes
                         <br />
-                        <input
+                        <textarea
                             type='text'
                             name='notes'
                             value={notes}

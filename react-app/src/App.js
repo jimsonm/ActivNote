@@ -7,6 +7,7 @@ import User from './components/UserProfile';
 import { authenticate } from './store/session';
 import SplashPage from './components/SplashPage';
 import Exercises from './components/UserProfile/Exercises';
+import Workouts from './components/UserProfile/Workouts';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -31,6 +32,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path={`/user/:userId/exercises`} exact={true}>
           <Exercises />
+        </ProtectedRoute>
+        <ProtectedRoute path={`/user/:userId/workouts`} exact={true}>
+          <Workouts />
         </ProtectedRoute>
         <Route path='/' exact={true} >
           <SplashNavBar />
