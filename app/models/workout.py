@@ -17,6 +17,5 @@ class Workout(db.Model):
             'id': self.id,
             'workout_name': self.workout_name,
             'track_id': self.track_id,
-            'activity_id': self.activity_id,
             'user_id': self.user_id
         }
