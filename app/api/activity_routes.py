@@ -28,7 +28,7 @@ def updateActivity(activityId):
     if activity is None:
         return {'message': 'No activity found'}, 404
     data = request.get_json()
-    activity.duration = data['sets']
+    activity.sets = data['sets']
     activity.repetitions = data['reps']
     activity.duration = data['duration']
     db.session.commit()

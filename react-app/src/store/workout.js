@@ -7,7 +7,6 @@ const setWorkouts = (workouts) => ({
 
 export const getWorkouts = (userId) => async (dispatch) => {
     const response = await fetch(`/api/workouts/all/${userId}`)
-    console.log(response)
     if (response.ok) {
         const workouts = await response.json();
         await dispatch(setWorkouts(workouts));
