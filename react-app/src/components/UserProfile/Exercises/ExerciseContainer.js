@@ -35,15 +35,15 @@ function ExerciseContainer() {
                         Exercises
                     </div>
                     <div>
-                    <div className={styles.individualExerciseContainer}>
-                        {exercises.map((exercise) => (
-                            <div onClick={() => displayDetails(exercise.id)} key={exercise.id} className={styles.exerciseNames}>
-                                {exercise.exercise_name}
-                                <br/>
-                                {exercise.notes}
-                            </div>
-                        ))}
-                    </div>
+                        <div className={styles.individualExerciseContainer}>
+                            {exercises.map((exercise) => (
+                                <div onClick={() => displayDetails(exercise.id)} key={exercise.id} className={styles.exerciseNames}>
+                                    {exercise.exercise_name}
+                                    <br />
+                                    {exercise.notes}
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </div>
                 <div className={styles.ExerciseDetails}>
@@ -53,7 +53,7 @@ function ExerciseContainer() {
                         </div>
                     )}
                     {currentExercise && selected && (
-                        <ExerciseDetails exercise={currentExercise} setCurrentExercise={setCurrentExercise} setSelected={setSelected} isForm={isForm} setIsForm={setIsForm}/>
+                        <ExerciseDetails exercise={currentExercise} setCurrentExercise={setCurrentExercise} setSelected={setSelected} isForm={isForm} setIsForm={setIsForm} />
                     )}
                 </div>
             </div>

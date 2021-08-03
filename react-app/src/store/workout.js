@@ -16,6 +16,14 @@ export const getWorkouts = (userId) => async (dispatch) => {
     }
 }
 
+export const getWorkoutById = (workoutId) => async (dispatch) => {
+    const response = await fetch(`/api/workouts/${workoutId}`)
+    if (response.ok) {
+        const workout = await response.json()
+        return workout
+    }
+}
+
 const initialState = {};
 
 export default function reducer(state = initialState, action) {

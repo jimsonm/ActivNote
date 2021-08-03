@@ -4,12 +4,14 @@ import session from './session'
 import exercise from './exercise'
 import workout from './workout'
 import activity from './activity'
+import current from './current'
 
 const rootReducer = combineReducers({
   session,
   exercise,
   workout,
-  activity
+  activity,
+  current
 });
 
 
