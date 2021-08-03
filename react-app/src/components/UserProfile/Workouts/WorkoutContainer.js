@@ -17,7 +17,6 @@ function WorkoutContainer() {
     const currWorkoutId = useSelector(state => state.current.currentWorkoutId)
     // const activities = useSelector(state => Object.values(state.activity))
     const [showActivities, setShowActivities] = useState(false)
-    console.log(workouts)
 
     useEffect(() => {
         dispatch(getWorkouts(userId))
@@ -47,17 +46,14 @@ function WorkoutContainer() {
                         {workouts.map((workout) => (
                             <div key={workout.id} className={styles.WorkoutNames}>
                                 <div className={styles.iconsDiv}>
-                                    {!showActivities && current['currentWorkoutId'] !== workout.id && (
-                                        <GoTriangleRight onClick={() => displayActivities(workout.id)} className={styles.icons} />
-                                    )}
                                     {showActivities && current['currentWorkoutId'] === workout.id && (
                                         <GoTriangleDown onClick={() => displayActivities(workout.id)} />
                                     )}
-                                    {current['currentWorkoutId'] === workout.id && !showActivities && (
-                                        <GoTriangleRight onClick={() => displayActivities(workout.id)} className={styles.icons} />
-                                    )}
                                     {showActivities && current['currentWorkoutId'] !== workout.id && (
                                         <GoTriangleRight onClick={() => displayActivities(workout.id)} />
+                                    )}
+                                    {!showActivities && (
+                                        <GoTriangleRight onClick={() => displayActivities(workout.id)} className={styles.icons} />
                                     )}
                                     {workout.workout_name}
                                 </div>

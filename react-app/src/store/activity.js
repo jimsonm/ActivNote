@@ -13,7 +13,6 @@ const deleteAct = (activity) => ({
 
 export const getActivities = (workoutId) => async (dispatch) => {
     const response = await fetch(`/api/activities/all/${workoutId}`)
-    console.log(response)
     if (response.ok) {
         const activities = await response.json();
         await dispatch(setActivities(activities));
@@ -23,7 +22,6 @@ export const getActivities = (workoutId) => async (dispatch) => {
 }
 
 export const editActivity = (payload) => async (dispatch) => {
-    console.log(payload)
     const activityId = payload.activityId
     const workoutId = payload.workoutId
     const response = await fetch(`/api/activities/${activityId}`, {
@@ -55,7 +53,7 @@ export default function reducer(state = initialState, action) {
     switch (action.type) {
         case SET_ACTIVITES:
             // newState = { ...state }
-            newState = {}
+            newState = {}    
             action.payload.activities.forEach((activity) => {
                 newState[activity.id] = activity;
             })

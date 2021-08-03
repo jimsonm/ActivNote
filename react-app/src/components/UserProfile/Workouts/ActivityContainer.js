@@ -5,7 +5,7 @@ import { getActivities, editActivity, deleteActivity } from '../../../store/acti
 import { useParams } from 'react-router-dom'
 import { getCurrentExercise } from '../../../store/current'
 import styles from '../../../css-modules/ActivityContainer.module.css'
-import { GoPlusSmall } from "react-icons/go";
+import { GoPlusSmall, GoChevronRight, GoChevronDown } from "react-icons/go";
 import { FaRegEdit, FaSave, FaTrashAlt } from "react-icons/fa";
 
 function ActivityContainer() {
@@ -80,7 +80,16 @@ function ActivityContainer() {
                 <div key={activity.id}>
                     <div>
                         <div className={styles.iconsDiv}>
-                            <GoPlusSmall onClick={(e) => expandDetails(e, activity)} />
+                            {details && currExerciseId === activity.exercise_id && (
+                                <GoChevronDown onClick={(e) => expandDetails(e, activity)} />
+                            )}
+                            {details && currExerciseId !== activity.exercise_id && (
+                                <GoChevronRight onClick={(e) => expandDetails(e, activity)} />
+                            )}
+                            {!details && (
+                                <GoChevronRight onClick={(e) => expandDetails(e, activity)} />
+                            )}
+                            {/* <GoPlusSmall onClick={(e) => expandDetails(e, activity)} /> */}
                             <div>
                             {exercises[activity.exercise_id]?.exercise_name}
                             </div>
