@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { editExercise, getExercises } from '../../../store/exercise'
-import { getActivities, editActivity } from '../../../store/activity'
+import { getActivities, editActivity, deleteActivity } from '../../../store/activity'
 import { useParams } from 'react-router-dom'
 import { getCurrentExercise } from '../../../store/current'
 import styles from '../../../css-modules/ActivityContainer.module.css'
 import { GoPlusSmall } from "react-icons/go";
-import { FaRegEdit, FaSave } from "react-icons/fa";
+import { FaRegEdit, FaSave, FaTrashAlt } from "react-icons/fa";
 
 function ActivityContainer() {
     const dispatch = useDispatch();
@@ -19,7 +19,7 @@ function ActivityContainer() {
     const [sets, setSets] = useState(0);
     const [reps, setReps] = useState(0);
     const [duration, setDuration] = useState(0);
-    console.log(exercises)
+    const [errors, setErrors] = useState('');
 
     useEffect(() => {
         dispatch(getExercises(userId))
@@ -47,39 +47,71 @@ function ActivityContainer() {
     }
 
     const updateActivity = async (e, activity) => {
-        e.stopPropagation();
-        e.preventDefault();
-        setIsInput(false)
-        const payload = {
-            activityId: activity.id,
-            workoutId: activity.workout_id,
-            sets,
-            reps,
-            duration
+        if (!Number(sets) || !Number(reps) || !Number(duration)) {
+            setErrors('Please make sure all inputs are integer values.')
+        } else {
+            e.stopPropagation();
+            e.preventDefault();
+            setIsInput(false)
+            const payload = {
+                activityId: activity.id,
+                workoutId: activity.workout_id,
+                sets,
+                reps,
+                duration
+            }
+            dispatch(editActivity(payload))
+            setErrors('');
         }
-        dispatch(editActivity(payload))
+    }
+
+    const removeActivity = async (e, activity) => {
+        e.preventDefault();
+        const payload = {
+            activityId: activity.id
+        }
+        dispatch(deleteActivity(payload))
     }
 
     return (
         <div>
             Exercises
             {activities.map((activity) => (
-                <div>
+                <div key={activity.id}>
                     <div>
                         <div className={styles.iconsDiv}>
                             <GoPlusSmall onClick={(e) => expandDetails(e, activity)} />
+                            <div>
                             {exercises[activity.exercise_id]?.exercise_name}
+                            </div>
                             {!isInput && currExerciseId === activity.exercise_id && details && (
+                                <>
+                                Edit
                                 <FaRegEdit onClick={(e) => edit(e, activity)} />
+                                </>
                             )}
 
 
                             {isInput && currExerciseId === activity.exercise_id && details && (
+                                <>
+                                Save Changes
                                 <FaSave onClick={(e) => updateActivity(e, activity)} />
+                                </>
+                            )}
+                            {!isInput && currExerciseId === activity.exercise_id && details && (
+                                <>
+                                Delete
+                                <FaTrashAlt onClick={(e) => removeActivity(e, activity)}/>
+                                </>
                             )}
                         </div>
                         {currExerciseId === activity.exercise_id && details && (
                             <>
+                            {errors && (
+                                <div>
+                                    {errors}
+                                </div>
+                            )}
                                 {!isInput && (
                                     <>
                                         <div>

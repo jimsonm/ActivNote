@@ -15,19 +15,16 @@ function WorkoutContainer() {
     const workouts = useSelector(state => Object.values(state.workout))
     const current = useSelector(state => state.current)
     const currWorkoutId = useSelector(state => state.current.currentWorkoutId)
-    const activities = useSelector(state => Object.values(state.activity))
+    // const activities = useSelector(state => Object.values(state.activity))
     const [showActivities, setShowActivities] = useState(false)
-    const [clickedActivity, setClickedActivity] = useState(false)
     console.log(workouts)
 
     useEffect(() => {
         dispatch(getWorkouts(userId))
-        // dispatch(getActivities())
     }, [dispatch, userId])
 
     const displayActivities = async (id) => {
         const workout = await dispatch(getWorkoutById(id))
-        // await setClickedActivity(activities)
         await dispatch(getActivities(workout.id))
         await dispatch(getCurrentWorkout(workout.id))
         if (!showActivities) {
@@ -36,9 +33,6 @@ function WorkoutContainer() {
         if (showActivities && currWorkoutId === id) {
             setShowActivities(false)
         }
-        // else {
-        //     await setShowActivities(false)
-        // }
     }
 
     return (

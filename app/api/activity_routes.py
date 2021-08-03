@@ -33,3 +33,11 @@ def updateActivity(activityId):
     activity.duration = data['duration']
     db.session.commit()
     return activity.to_dict()
+
+@activity_routes.route('/<int:activityId>', methods=['DELETE'])
+@login_required
+def deleteActivity(activityId):
+    activity = Activity.query.get(activityId)
+    db.session.delete(activity)
+    db.session.commit()
+    return {'message': 'Activity removed'}
