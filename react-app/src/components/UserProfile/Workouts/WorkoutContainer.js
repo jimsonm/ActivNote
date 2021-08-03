@@ -7,6 +7,7 @@ import styles from '../../../css-modules/WorkoutContainer.module.css'
 import ActivityContainer from "./ActivityContainer";
 import { getActivities } from "../../../store/activity";
 import { getCurrentWorkout } from '../../../store/current'
+import { GoTriangleRight, GoTriangleDown } from "react-icons/go";
 
 function WorkoutContainer() {
     const dispatch = useDispatch();
@@ -25,10 +26,14 @@ function WorkoutContainer() {
 
     const displayActivities = async (id) => {
         const workout = await dispatch(getWorkoutById(id))
-        await setShowActivities(true)
         // await setCurrWorkout(workout)
         await dispatch(getActivities(workout.id))
         await dispatch(getCurrentWorkout(workout.id))
+        if (!showActivities) {
+            await setShowActivities(true)
+        } else {
+            await setShowActivities(false)
+        }
     }
 
     return (
@@ -41,8 +46,16 @@ function WorkoutContainer() {
                     </div>
                     <div className={styles.individualWorkoutContainer}>
                         {workouts.map((workout) => (
-                            <div key={workout.id} className={styles.WorkoutNames} onClick={ () => displayActivities(workout.id)}>
+                            <div key={workout.id} className={styles.WorkoutNames}>
+                                <div className={styles.iconsDiv}>
+                                {!showActivities && (
+                                <GoTriangleRight onClick={ () => displayActivities(workout.id)} className={styles.icons}/>
+                                )}
+                                {showActivities && (
+                                    <GoTriangleDown onClick={ () => displayActivities(workout.id)}/>
+                                )}
                                 {workout.workout_name}
+                                </div>
                                 {current['currentWorkoutId'] === workout.id && showActivities && (
                                     <ActivityContainer workout={currWorkout}/>
                                 )}

@@ -16,6 +16,22 @@ export const getActivities = (workoutId) => async (dispatch) => {
     }
 }
 
+export const editActivity = (payload) => async (dispatch) => {
+    console.log(payload)
+    const activityId = payload.activityId
+    const workoutId = payload.workoutId
+    const response = await fetch(`/api/activities/${activityId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+    })
+    if (response.ok) {
+        dispatch(getActivities(workoutId))
+    }
+}
+
 const initialState = {};
 
 export default function reducer(state = initialState, action) {
