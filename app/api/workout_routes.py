@@ -22,11 +22,11 @@ def get_workouts_by_userId(id):
     return {'workouts': [workout.to_dict() for workout in workouts]}
 
 
-# @exercise_routes.route('/<int:id>')
-# @login_required
-# def exercise(id):
-#     exercise = Exercise.query.get(id)
-#     return exercise.to_dict()
+@workout_routes.route('/<int:id>')
+@login_required
+def workout(id):
+    workout = Workout.query.get(id)
+    return workout.to_dict()
 
 # @exercise_routes.route('/<int:exerciseId>', methods=['PUT'])
 # @login_required

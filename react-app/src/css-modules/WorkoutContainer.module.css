@@ -1,0 +1,53 @@
+.WorkoutContainer {
+  display: inline-flex;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100%;
+}
+
+.InnerWorkoutContainer {
+}
+
+.WorkoutNameContainer {
+}
+
+.title {
+  display: inline-flex;
+  padding: 20px 20px;
+  position: fixed;
+  border-bottom: 1px gray solid;
+  border-right: 1px gray solid;
+  width: calc(100vw - 250px);
+  z-index: 1;
+}
+
+.InnerWorkoutContainer {
+  display: inline-flex;
+  border-left: 1px gray solid;
+  width: 80%;
+}
+
+.individualWorkoutContainer {
+  margin-top: 58px;
+  position: fixed;
+  height: calc(100vh - 58px);
+  overflow-y: scroll;
+  width: calc(100vw - 200px);
+  background-color: white;
+  z-index: 0;
+  border-right: 1px gray solid;
+}
+
+.WorkoutNames {
+  width: auto;
+  padding: 20px 20px;
+  border-bottom: 1px gray solid;
+  /* overflow: hidden;
+    height: 80px; */
+}
+
+.iconsDiv {
+    display: flex;
+    align-items: center;
+}
