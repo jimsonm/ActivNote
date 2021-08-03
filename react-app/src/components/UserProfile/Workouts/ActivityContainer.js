@@ -8,13 +8,12 @@ import styles from '../../../css-modules/ActivityContainer.module.css'
 import { GoPlusSmall } from "react-icons/go";
 import { FaRegEdit, FaSave } from "react-icons/fa";
 
-function ActivityContainer({ workout }) {
-    console.log(workout)
+function ActivityContainer() {
     const dispatch = useDispatch();
     const { userId } = useParams();
     const activities = useSelector(state => Object.values(state.activity))
     const exercises = useSelector(state => state.exercise)
-    const currEx = useSelector(state => state.current.currentExerciseId)
+    const currExerciseId = useSelector(state => state.current.currentExerciseId)
     const [details, setDetails] = useState(false)
     const [isInput, setIsInput] = useState(false)
     const [sets, setSets] = useState(0);
@@ -32,7 +31,7 @@ function ActivityContainer({ workout }) {
         if (!details) {
             setDetails(true)
         }
-        if (details && currEx === activity.exercise_id) {
+        if (details && currExerciseId === activity.exercise_id) {
             setDetails(false)
         }
     }
@@ -70,16 +69,16 @@ function ActivityContainer({ workout }) {
                         <div className={styles.iconsDiv}>
                             <GoPlusSmall onClick={(e) => expandDetails(e, activity)} />
                             {exercises[activity.exercise_id]?.exercise_name}
-                            {!isInput && currEx === activity.exercise_id && details && (
+                            {!isInput && currExerciseId === activity.exercise_id && details && (
                                 <FaRegEdit onClick={(e) => edit(e, activity)} />
                             )}
 
 
-                            {isInput && currEx === activity.exercise_id && details && (
+                            {isInput && currExerciseId === activity.exercise_id && details && (
                                 <FaSave onClick={(e) => updateActivity(e, activity)} />
                             )}
                         </div>
-                        {currEx === activity.exercise_id && details && (
+                        {currExerciseId === activity.exercise_id && details && (
                             <>
                                 {!isInput && (
                                     <>
