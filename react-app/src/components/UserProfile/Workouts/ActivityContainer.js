@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { editExercise, getExercises } from '../../../store/exercise'
 import { getActivities, editActivity, deleteActivity } from '../../../store/activity'
 import { useParams } from 'react-router-dom'
-import { getCurrentExercise } from '../../../store/current'
+import { getCurrentExercise, getCurrentActivity } from '../../../store/current'
 import styles from '../../../css-modules/ActivityContainer.module.css'
 import { GoChevronRight, GoChevronDown } from "react-icons/go";
 import { FaRegEdit, FaSave, FaTrashAlt, FaPlusSquare } from "react-icons/fa";
@@ -15,6 +15,7 @@ function ActivityContainer() {
     const activities = useSelector(state => Object.values(state.activity))
     const exercises = useSelector(state => state.exercise)
     const currExerciseId = useSelector(state => state.current.currentExerciseId)
+    const currActivityId = useSelector(state => state.current.currentActivityId)
     const [details, setDetails] = useState(false)
     const [isInput, setIsInput] = useState(false)
     const [sets, setSets] = useState(0);
@@ -29,11 +30,12 @@ function ActivityContainer() {
 
     const expandDetails = (e, activity) => {
         e.stopPropagation();
+        dispatch(getCurrentActivity(activity.id))
         dispatch(getCurrentExercise(activity.exercise_id))
         if (!details) {
             setDetails(true)
         }
-        if (details && currExerciseId === activity.exercise_id) {
+        if (details && currActivityId === activity.id) {
             setDetails(false)
         }
     }
@@ -82,50 +84,51 @@ function ActivityContainer() {
     return (
         <div>
             <div className={styles.iconsDiv}>
-                <FaPlusSquare onClick={showAddModal}/>
-                Exercises
+                <FaPlusSquare onClick={showAddModal} className={styles.icon} />
+                <div className={styles.title}>
+                    Exercises
+                </div>
             </div>
             {showAddActivityModal && (
-                <AddActivityModal setShowAddActivityModal={setShowAddActivityModal}/>
+                <AddActivityModal setShowAddActivityModal={setShowAddActivityModal} />
             )}
             {activities.map((activity) => (
-                <div key={activity.id}>
+                <div key={activity.id} className={styles.indivActivity}>
                     <div>
                         <div className={styles.iconsDiv}>
-                            {details && currExerciseId === activity.exercise_id && (
-                                <GoChevronDown onClick={(e) => expandDetails(e, activity)} />
+                            {details && currActivityId === activity.id && (
+                                <GoChevronDown onClick={(e) => expandDetails(e, activity)} className={styles.icon} />
                             )}
-                            {details && currExerciseId !== activity.exercise_id && (
-                                <GoChevronRight onClick={(e) => expandDetails(e, activity)} />
+                            {details && currActivityId !== activity.id && (
+                                <GoChevronRight onClick={(e) => expandDetails(e, activity)} className={styles.icon} />
                             )}
                             {!details && (
-                                <GoChevronRight onClick={(e) => expandDetails(e, activity)} />
+                                <GoChevronRight onClick={(e) => expandDetails(e, activity)} className={styles.icon} />
                             )}
+                            <div className={styles.iconSpacing}>
                             <div>
                                 {exercises[activity.exercise_id]?.exercise_name}
                             </div>
-                            {!isInput && currExerciseId === activity.exercise_id && details && (
+                            <div>
+                            {!isInput && currActivityId === activity.id && details && (
                                 <>
-                                    Edit
-                                    <FaRegEdit onClick={(e) => edit(e, activity)} />
+                                    <FaRegEdit onClick={(e) => edit(e, activity)} className={styles.iconR} />
                                 </>
                             )}
-
-
-                            {isInput && currExerciseId === activity.exercise_id && details && (
+                            {isInput && currActivityId === activity.    id && details && (
                                 <>
-                                    Save Changes
-                                    <FaSave onClick={(e) => updateActivity(e, activity)} />
+                                    <FaSave onClick={(e) => updateActivity(e, activity)} className={styles.iconR} />
                                 </>
                             )}
-                            {!isInput && currExerciseId === activity.exercise_id && details && (
+                            {!isInput && currActivityId === activity.id && details && (
                                 <>
-                                    Delete
-                                    <FaTrashAlt onClick={(e) => removeActivity(e, activity)} />
+                                    <FaTrashAlt onClick={(e) => removeActivity(e, activity)} className={styles.iconR} />
                                 </>
                             )}
+                            </div>
+                            </div>
                         </div>
-                        {currExerciseId === activity.exercise_id && details && (
+                        {currActivityId === activity.id && details && (
                             <>
                                 {errors && (
                                     <div>
@@ -134,47 +137,56 @@ function ActivityContainer() {
                                 )}
                                 {!isInput && (
                                     <>
-                                        <div>
-                                            {`Sets: ${activity.sets}`}
+                                        <div className={styles.activityInfo}>
+                                            {`Sets:`}
+                                            <br/>
+                                            {activity.sets}
                                         </div>
-                                        <div>
-                                            {`Reps: ${activity.repetitions}`}
+                                        <div className={styles.activityInfo}>
+                                            {`Reps:`}
+                                            <br/>
+                                            {activity.repetitions}
                                         </div>
-                                        <div>
-                                            {`Duration: ${activity.duration} Minutes`}
+                                        <div className={styles.activityInfo}>
+                                            {`Duration (in minutes):`}
+                                            <br/>
+                                            {activity.duration}
                                         </div>
                                     </>
                                 )}
                                 {isInput && (
                                     <>
                                         <form>
-                                            <div>
+                                            <div className={styles.activityInfo}>
                                                 {`Sets: `}
+                                                <br/>
                                                 <input
                                                     type='text'
                                                     name='sets'
                                                     value={sets}
                                                     onChange={(e) => setSets(e.target.value)}
+                                                    className={styles.inputs}
                                                 />
                                             </div>
-                                            <div>
+                                            <div className={styles.activityInfo}>
                                                 {`Reps: `}
                                                 <input
                                                     type='text'
                                                     name='reps'
                                                     value={reps}
                                                     onChange={(e) => setReps(e.target.value)}
+                                                    className={styles.inputs}
                                                 />
                                             </div>
-                                            <div>
-                                                {`Duration: `}
+                                            <div className={styles.activityInfo}>
+                                                {`Duration (in minutes): `}
                                                 <input
                                                     type='text'
                                                     name='duration'
                                                     value={duration}
                                                     onChange={(e) => setDuration(e.target.value)}
+                                                    className={styles.inputs}
                                                 />
-                                                {`Minutes`}
                                             </div>
                                         </form>
                                     </>

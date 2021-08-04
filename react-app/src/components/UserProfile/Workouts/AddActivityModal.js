@@ -40,15 +40,20 @@ function AddActivityModal({ setShowAddActivityModal }) {
 
     return (
         <Modal onClose={() => setShowAddActivityModal(false)}>
-            <>
+            <div className={styles.container}>
                 {!selectExercise && (
                     <div>
                         Select An Exercise
-                        {exercises.map((exercise) => (
-                            <div onClick={() => setSelectExercise(exercise)} key={exercise.id}>
-                                {exercise.exercise_name}
-                            </div>
-                        ))}
+                        <div className={styles.exerciseList}>
+                            {exercises.map((exercise) => (
+                                <div onClick={() => setSelectExercise(exercise)} key={exercise.id} className={styles.indivExercise}>
+                                    {exercise.exercise_name}
+                                </div>
+                            ))}
+                        </div>
+                        <button onClick={cancel} className={styles.button}>
+                            Cancel
+                        </button>
                     </div>
                 )}
                 {selectExercise && (
@@ -101,7 +106,7 @@ function AddActivityModal({ setShowAddActivityModal }) {
                         </form>
                     </div>
                 )}
-            </>
+            </div>
         </Modal>
     )
 }

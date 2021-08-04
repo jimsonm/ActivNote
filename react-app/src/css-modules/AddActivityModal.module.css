@@ -1,13 +1,35 @@
 .button {
-    margin: 5px 0px;
-    background-color: #00a82d;
-    border-radius: 3px;
-    color: white;
-    box-shadow: none;
-    border: 0;
-  }
-  
-  .button:hover {
-    background-color: #008f26;
-  }
-  
+  margin: 15px 15px;
+  background-color: #00a82d;
+  border-radius: 3px;
+  color: white;
+  box-shadow: none;
+  border: 0;
+}
+
+.button:hover {
+  background-color: #008f26;
+}
+
+.container {
+  width: 400px;
+  height: 400px;
+  text-align: center;
+}
+
+.exerciseList {
+  width: 350px;
+  height: 330px;
+  text-align: left;
+  overflow-y: scroll;
+  margin: 10px 25px;
+}
+
+.indivExercise {
+  margin: 5px;
+}
+
+.indivExercise:hover {
+  background-color: lightgray;
+  cursor: pointer;
+}

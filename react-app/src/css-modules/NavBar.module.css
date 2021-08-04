@@ -1,7 +1,7 @@
 .NavBar {
   display: inline-flex;
   flex-direction: column;
-  width: 200px;
+  min-width: 200px;
   padding-right: 10px;
 }
 
