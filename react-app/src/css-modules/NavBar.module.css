@@ -2,11 +2,18 @@
   display: inline-flex;
   flex-direction: column;
   min-width: 200px;
+  height: 100vh;
   padding-right: 10px;
+  background-color: black;
 }
 
 body {
   margin: 0;
   padding: 0;
   overflow: hidden;
+}
+
+.NavDiv {
+  text-decoration: none;
+  color: #A6A6A6;
 }

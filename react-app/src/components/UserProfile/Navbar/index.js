@@ -25,24 +25,24 @@ function NavBar() {
     }
     return (
         <div className={styles.NavBar}>
-            <div>
+            <div className={styles.NavDiv}>
                 {userProfile.id}
             </div>
-            <div>
+            <div className={styles.NavDiv}>
                 {userProfile.email}
             </div>
             <AddModal />
-            <NavLink to={`/user/${userId}`} exact={true}>
+            <NavLink to={`/user/${userId}`} exact={true} className={styles.NavDiv}>
                 Home
             </NavLink>
-            <NavLink to={`/user/${userId}/exercises`} exact={true}>
+            <NavLink to={`/user/${userId}/exercises`} exact={true} className={styles.NavDiv}>
                 Exercises
             </NavLink>
-            <NavLink to={`/user/${userId}/workouts`} exact={true}>
+            <NavLink to={`/user/${userId}/workouts`} exact={true} className={styles.NavDiv}>
                 Workouts
             </NavLink>
-            <a href='https://github.com/jimsonm/ActivNote' target='_blank' rel='noopener noreferrer'>Github</a>
-            <a href='https://www.linkedin.com/in/jimson-ma-462197213/' target='_blank' rel='noopener noreferrer'>Linkedin</a>
+            <a href='https://github.com/jimsonm/ActivNote' target='_blank' rel='noopener noreferrer' className={styles.NavDiv}>Github</a>
+            <a href='https://www.linkedin.com/in/jimson-ma-462197213/' target='_blank' rel='noopener noreferrer' className={styles.NavDiv}>Linkedin</a>
         </div>
     )
 }
