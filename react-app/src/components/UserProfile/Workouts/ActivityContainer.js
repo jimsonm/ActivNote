@@ -5,8 +5,8 @@ import { getActivities, editActivity, deleteActivity } from '../../../store/acti
 import { useParams } from 'react-router-dom'
 import { getCurrentExercise } from '../../../store/current'
 import styles from '../../../css-modules/ActivityContainer.module.css'
-import { GoPlusSmall, GoChevronRight, GoChevronDown } from "react-icons/go";
-import { FaRegEdit, FaSave, FaTrashAlt } from "react-icons/fa";
+import { GoChevronRight, GoChevronDown } from "react-icons/go";
+import { FaRegEdit, FaSave, FaTrashAlt, FaPlusSquare } from "react-icons/fa";
 
 function ActivityContainer() {
     const dispatch = useDispatch();
@@ -75,7 +75,10 @@ function ActivityContainer() {
 
     return (
         <div>
-            Exercises
+            <div className={styles.iconsDiv}>
+                <FaPlusSquare />
+                Exercises
+            </div>
             {activities.map((activity) => (
                 <div key={activity.id}>
                     <div>
@@ -89,38 +92,37 @@ function ActivityContainer() {
                             {!details && (
                                 <GoChevronRight onClick={(e) => expandDetails(e, activity)} />
                             )}
-                            {/* <GoPlusSmall onClick={(e) => expandDetails(e, activity)} /> */}
                             <div>
-                            {exercises[activity.exercise_id]?.exercise_name}
+                                {exercises[activity.exercise_id]?.exercise_name}
                             </div>
                             {!isInput && currExerciseId === activity.exercise_id && details && (
                                 <>
-                                Edit
-                                <FaRegEdit onClick={(e) => edit(e, activity)} />
+                                    Edit
+                                    <FaRegEdit onClick={(e) => edit(e, activity)} />
                                 </>
                             )}
 
 
                             {isInput && currExerciseId === activity.exercise_id && details && (
                                 <>
-                                Save Changes
-                                <FaSave onClick={(e) => updateActivity(e, activity)} />
+                                    Save Changes
+                                    <FaSave onClick={(e) => updateActivity(e, activity)} />
                                 </>
                             )}
                             {!isInput && currExerciseId === activity.exercise_id && details && (
                                 <>
-                                Delete
-                                <FaTrashAlt onClick={(e) => removeActivity(e, activity)}/>
+                                    Delete
+                                    <FaTrashAlt onClick={(e) => removeActivity(e, activity)} />
                                 </>
                             )}
                         </div>
                         {currExerciseId === activity.exercise_id && details && (
                             <>
-                            {errors && (
-                                <div>
-                                    {errors}
-                                </div>
-                            )}
+                                {errors && (
+                                    <div>
+                                        {errors}
+                                    </div>
+                                )}
                                 {!isInput && (
                                     <>
                                         <div>
