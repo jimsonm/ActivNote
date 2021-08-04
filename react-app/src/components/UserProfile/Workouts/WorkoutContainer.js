@@ -47,13 +47,13 @@ function WorkoutContainer() {
                             <div key={workout.id} className={styles.WorkoutNames}>
                                 <div className={styles.iconsDiv}>
                                     {showActivities && current['currentWorkoutId'] === workout.id && (
-                                        <GoTriangleDown onClick={() => displayActivities(workout.id)} />
+                                        <GoTriangleDown onClick={() => displayActivities(workout.id)} className={styles.icon}/>
                                     )}
                                     {showActivities && current['currentWorkoutId'] !== workout.id && (
-                                        <GoTriangleRight onClick={() => displayActivities(workout.id)} />
+                                        <GoTriangleRight onClick={() => displayActivities(workout.id)} className={styles.icon}/>
                                     )}
                                     {!showActivities && (
-                                        <GoTriangleRight onClick={() => displayActivities(workout.id)} className={styles.icons} />
+                                        <GoTriangleRight onClick={() => displayActivities(workout.id)} className={styles.icon} />
                                     )}
                                     {workout.workout_name}
                                 </div>

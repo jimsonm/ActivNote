@@ -1,4 +1,55 @@
 .iconsDiv {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
+}
+
+.icon:hover {
+  cursor: pointer;
+}
+
+.indivActivity {
+  margin: 5px 25px;
+}
+
+.indivActivity:hover {
+  background-color: lightgray;
+}
+
+.title {
+  margin: 0px 10px;
+}
+
+.iconR {
+  margin: 0px 50px;
+}
+
+.iconR:hover {
+  cursor: pointer;
+}
+
+.iconSpacing {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.inputs {
+  width: 100%;
+}
+
+.inputs[type="text"] {
+  border: 0;
+  padding: 0;
+  font-size: 16px;
+  font-family: Times;
+  background-color: transparent;
+}
+
+.inputs:hover {
+    border: 1px solid black;
+  }
+
+.activityInfo {
+  padding-left: 25px;
+  margin: 10px 0px;
 }
