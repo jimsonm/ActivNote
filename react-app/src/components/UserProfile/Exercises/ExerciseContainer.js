@@ -11,7 +11,6 @@ function ExerciseContainer() {
     const { userId } = useParams();
     const [currentExercise, setCurrentExercise] = useState(null);
     const exercises = useSelector(state => Object.values(state.exercise))
-    console.log(exercises)
     const [selected, setSelected] = useState(false)
     const [isForm, setIsForm] = useState(false)
 

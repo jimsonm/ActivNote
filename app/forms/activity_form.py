@@ -7,4 +7,4 @@ class ActivityForm(FlaskForm) :
     repetitions = IntegerField('repetitions', validators=[DataRequired()])
     duration = IntegerField('duration')
     exercise_id = IntegerField('exercise_id', validators=[DataRequired()])
-    workout = IntegerField('workout_id', validators=[DataRequired()])
+    workout_id = IntegerField('workout_id', validators=[DataRequired()])

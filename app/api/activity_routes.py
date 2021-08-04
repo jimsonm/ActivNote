@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
 from app.models import db, Activity
-# from app.forms import ExerciseForm
+from app.forms import ActivityForm
 
 activity_routes = Blueprint('activities', __name__)
 
@@ -41,3 +41,22 @@ def deleteActivity(activityId):
     db.session.delete(activity)
     db.session.commit()
     return {'message': 'Activity removed'}
+
+@activity_routes.route('/', methods=['POST'])
+@login_required
+def createActivity():
+    form = ActivityForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    print(form.data)
+    if form.validate_on_submit():
+        activity = Activity(
+            sets=form.data['sets'],
+            repetitions=form.data['repetitions'],
+            duration=form.data['duration'],
+            exercise_id=form.data['exercise_id'],
+            workout_id=form.data['workout_id']
+        )
+        db.session.add(activity)
+        db.session.commit()
+        return activity.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401 

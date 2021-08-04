@@ -7,6 +7,7 @@ import { getCurrentExercise } from '../../../store/current'
 import styles from '../../../css-modules/ActivityContainer.module.css'
 import { GoChevronRight, GoChevronDown } from "react-icons/go";
 import { FaRegEdit, FaSave, FaTrashAlt, FaPlusSquare } from "react-icons/fa";
+import AddActivityModal from './AddActivityModal'
 
 function ActivityContainer() {
     const dispatch = useDispatch();
@@ -20,6 +21,7 @@ function ActivityContainer() {
     const [reps, setReps] = useState(0);
     const [duration, setDuration] = useState(0);
     const [errors, setErrors] = useState('');
+    const [showAddActivityModal, setShowAddActivityModal] = useState(false);
 
     useEffect(() => {
         dispatch(getExercises(userId))
@@ -73,12 +75,19 @@ function ActivityContainer() {
         dispatch(deleteActivity(payload))
     }
 
+    const showAddModal = () => {
+        setShowAddActivityModal(true)
+    }
+
     return (
         <div>
             <div className={styles.iconsDiv}>
-                <FaPlusSquare />
+                <FaPlusSquare onClick={showAddModal}/>
                 Exercises
             </div>
+            {showAddActivityModal && (
+                <AddActivityModal setShowAddActivityModal={setShowAddActivityModal}/>
+            )}
             {activities.map((activity) => (
                 <div key={activity.id}>
                     <div>
