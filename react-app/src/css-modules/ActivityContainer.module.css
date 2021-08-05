@@ -12,7 +12,7 @@
 }
 
 .indivActivity:hover {
-  background-color: lightgray;
+  background-color: rgba(211, 211, 211, 0.178);
 }
 
 .title {
