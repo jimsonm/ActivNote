@@ -7,8 +7,6 @@ import { editExercise, deleteExercise } from '../../../store/exercise';
 function ExerciseDetails({ exercise, setCurrentExercise, setSelected, isForm, setIsForm }) {
     const currExId = exercise.id
     const currentExercise = useSelector(state => state.exercise[currExId])
-    // const exercises = useSelector(state => Object.values(state.exercise))
-    // console.log(exercises)
     console.log(currentExercise)
     const { userId } = useParams();
     const dispatch = useDispatch();
@@ -79,25 +77,37 @@ function ExerciseDetails({ exercise, setCurrentExercise, setSelected, isForm, se
                             </button>
                         </div>
                     </div>
-                    <div>
+                    <div className={styles.Name}>
                         {currentExercise.exercise_name}
                     </div>
                     <div>
-                        Calories burned/min
-                        <br />
-                        {currentExercise.calories_burned}
+                        <div className={styles.CaloriesTitle}>
+                            Calories burned/min
+                        </div>
+                        {/* <br /> */}
+                        <div className={styles.CaloriesInfo}>
+                            {currentExercise.calories_burned}
+                        </div>
                     </div>
                     <div>
-                        Notes
-                        <br />
-                        {currentExercise.notes}
+                        <div className={styles.NotesTitle}>
+                            Notes
+                        </div>
+                        {/* <br /> */}
+                        <div className={styles.NotesInfo}>
+                            {currentExercise.notes}
+                        </div>
                     </div>
                 </div>
             )}
             {isForm && (
                 <form>
                     <div className={styles.title}>
-                        <div />
+                        <div>
+                            {errors.map((error, ind) => (
+                                <div key={ind}>{error}</div>
+                            ))}
+                        </div>
                         <div>
                             <button onClick={updateExercise} className={styles.button}>
                                 Save
@@ -107,39 +117,38 @@ function ExerciseDetails({ exercise, setCurrentExercise, setSelected, isForm, se
                             </button>
                         </div>
                     </div>
-                    <div>
+                    <div className={styles.Name}>
                         <input
                             type='text'
                             name='name'
                             value={name}
                             onChange={(e) => setName(e.target.value)}
-                            className={styles.input}
+                            className={styles.input1}
                         />
                     </div>
                     <div>
-                        Calories burned/min
-                        <br />
+                        <div className={styles.CaloriesTitle}>
+                            Calories burned/min
+                        </div>
                         <input
                             type='text'
                             name='calories_burned'
                             value={calories}
                             onChange={(e) => setCalories(e.target.value)}
-                            className={styles.input}
+                            className={styles.input2}
                         />
                     </div>
-                    {errors.map((error, ind) => (
-                        <div key={ind}>{error}</div>
-                    ))}
                     <div>
-                        Notes
-                        <br />
+                        <div className={styles.NotesTitle}>
+                            Notes
+                        </div>
                         <textarea
                             type='text'
                             name='notes'
                             value={notes}
                             placeholder='Notes about your exercise'
                             onChange={(e) => setNotes(e.target.value)}
-                            className={styles.input}
+                            className={styles.input2}
                         />
                     </div>
                 </form>
