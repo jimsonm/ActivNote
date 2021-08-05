@@ -1,5 +1,10 @@
 .container {
   padding: 25px;
+  font-size: 20px;
+}
+
+.errors {
+  font-size: 14px;
 }
 
 .Form {
@@ -9,8 +14,21 @@
   margin: 0;
 }
 
-.input {
+.input1,
+.input2,
+.input3 {
   margin: 10px 0px;
+  font-family: Times;
+}
+
+.input2 {
+  resize: none;
+}
+
+.input3 {
+  resize: vertical;
+  min-height: 36px;
+  max-height: 170px;
 }
 
 .button {

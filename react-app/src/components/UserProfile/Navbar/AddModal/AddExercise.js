@@ -3,8 +3,9 @@ import styles from '../../../../css-modules/AddExercise.module.css'
 import { useParams, useHistory } from 'react-router-dom'
 import { addExercise } from '../../../../store/exercise'
 import { useDispatch } from 'react-redux'
+import { IoReturnUpBackSharp } from "react-icons/io5";
 
-function ExerciseForm({setShowModal}) {
+function ExerciseForm({setShowModal, setChosen, setCreateExercise}) {
     const dispatch = useDispatch();
     const { userId } = useParams();
     const [exercise_name, setExercise_name] = useState('');
@@ -56,13 +57,19 @@ function ExerciseForm({setShowModal}) {
         setNotes(e.target.value)
     }
 
+    const back = () => {
+        setChosen(false)
+        setCreateExercise(false)
+    }
     return (
         <div className={styles.container}>
+            <IoReturnUpBackSharp onClick={back}/>  
+            <br />
             Create A New Exercise
             <form onSubmit={createExercise} className={styles.Form}>
                 <div>
                     {errors.map((error, ind) => (
-                        <div key={ind}>{error}</div>
+                        <div key={ind} className={styles.errors}>{error}</div>
                     ))}
                 </div>
                 <input
@@ -72,24 +79,25 @@ function ExerciseForm({setShowModal}) {
                     value={exercise_name}
                     required={true}
                     onChange={updateExerciseName}
-                    className={styles.input}
+                    className={styles.input1}
                 />
-                <input
+                <textarea
                     name='calories_burned'
                     type='text'
                     placeholder='Calories burned per minute, if left blank a default value of 0 will be used.'
                     value={calories_burned}
                     onChange={updateCalories}
-                    className={styles.input}
+                    className={styles.input2}
+                    rows={2}
                 />
                 <textarea
                     name='notes'
-                    rows={3}
+                    rows={2}
                     type='text'
                     placeholder='Any thoughts you might have regarding this exercise. This can include goals or feelings about the exercise.'
                     value={notes}
                     onChange={updateNotes}
-                    className={styles.input}
+                    className={styles.input3}
                 />
                 <button type='submit' className={styles.button}>Submit</button>
                 <button onClick={() => setShowModal(false)} className={styles.button}>Cancel</button>
