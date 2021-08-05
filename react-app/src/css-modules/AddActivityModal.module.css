@@ -12,14 +12,18 @@
 }
 
 .container {
-  width: 400px;
-  height: 400px;
+  display: inline-flex;
+  width: 350px;
+  height: 350px;
   text-align: center;
+  padding: 25px;
+  justify-content: center;
+  align-items: center;
 }
 
 .exerciseList {
-  width: 350px;
-  height: 330px;
+  width: 300px;
+  height: 280px;
   text-align: left;
   overflow-y: scroll;
   margin: 10px 25px;
@@ -31,5 +35,29 @@
 
 .indivExercise:hover {
   background-color: lightgray;
+  cursor: pointer;
+}
+
+.activityDetails {
+  width: 100%;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.inputDivs {
+  display: inline-flex;
+  justify-content: space-between;
+  width: 65%;
+  margin: 10px;
+}
+
+.back {
+  display: inline-flex;
+  justify-content: left;
+  width: 65%;
+}
+
+.icon:hover {
   cursor: pointer;
 }

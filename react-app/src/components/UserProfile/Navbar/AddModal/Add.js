@@ -28,7 +28,7 @@ function Add({setShowModal}) {
                 </>
             )}
             {createExercise && (
-                <ExerciseForm setShowModal={setShowModal}/>
+                <ExerciseForm setShowModal={setShowModal} setChosen={setChosen} setCreateExercise={setCreateExercise}/>
             )}
             {createWorkout && (
                 <WorkoutForm setShowModal={setShowModal}/>

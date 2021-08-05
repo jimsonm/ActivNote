@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useState } from 'react'
 import styles from '../../../css-modules/AddActivityModal.module.css'
 import { addActivity } from '../../../store/activity'
+import { IoReturnUpBackSharp } from "react-icons/io5";
 
 function AddActivityModal({ setShowAddActivityModal }) {
     const dispatch = useDispatch();
@@ -38,6 +39,10 @@ function AddActivityModal({ setShowAddActivityModal }) {
         setShowAddActivityModal(false)
     }
 
+    const back = () => {
+        setSelectExercise(false)
+    }
+
     return (
         <Modal onClose={() => setShowAddActivityModal(false)}>
             <div className={styles.container}>
@@ -57,53 +62,60 @@ function AddActivityModal({ setShowAddActivityModal }) {
                     </div>
                 )}
                 {selectExercise && (
-                    <div>
-                        {selectExercise.exercise_name}
-                        <form>
-                            {errors && (
-                                <div>
-                                    {errors}
+                    <div className={styles.activityDetails}>
+                        <div className={styles.back}>
+                            <IoReturnUpBackSharp onClick={back} className={styles.icon} />
+                        </div>
+                        <div>
+                            <div>
+                                {selectExercise.exercise_name}
+                            </div>
+                            <form>
+                                {errors && (
+                                    <div>
+                                        {errors}
+                                    </div>
+                                )}
+                                <div className={styles.inputDivs}>
+                                    {`Sets: `}
+                                    <input
+                                        type='text'
+                                        name='sets'
+                                        value={sets}
+                                        onChange={(e) => setSets(e.target.value)}
+                                        placeholder='Sets'
+                                    />
                                 </div>
-                            )}
-                            <div>
-                                {`Sets: `}
-                                <input
-                                    type='text'
-                                    name='sets'
-                                    value={sets}
-                                    onChange={(e) => setSets(e.target.value)}
-                                    placeholder='Sets'
-                                />
-                            </div>
-                            <div>
-                                {`Reps: `}
-                                <input
-                                    type='text'
-                                    name='repetitions'
-                                    value={repetitions}
-                                    onChange={(e) => setRepetitions(e.target.value)}
-                                    placeholder='Repetitions'
-                                />
-                            </div>
-                            <div>
-                                {`Duration: `}
-                                <input
-                                    type='text'
-                                    name='duration'
-                                    value={duration}
-                                    onChange={(e) => setDuration(e.target.value)}
-                                    placeholder='Duration in minutes'
-                                />
-                            </div>
-                            <div>
-                                <button onClick={(e) => save(e, selectExercise.id)} className={styles.button}>
-                                    Save
-                                </button>
-                                <button onClick={cancel} className={styles.button}>
-                                    Cancel
-                                </button>
-                            </div>
-                        </form>
+                                <div className={styles.inputDivs}>
+                                    {`Reps: `}
+                                    <input
+                                        type='text'
+                                        name='repetitions'
+                                        value={repetitions}
+                                        onChange={(e) => setRepetitions(e.target.value)}
+                                        placeholder='Repetitions'
+                                    />
+                                </div>
+                                <div className={styles.inputDivs}>
+                                    {`Duration: `}
+                                    <input
+                                        type='text'
+                                        name='duration'
+                                        value={duration}
+                                        onChange={(e) => setDuration(e.target.value)}
+                                        placeholder='Duration in minutes'
+                                    />
+                                </div>
+                                <div>
+                                    <button onClick={(e) => save(e, selectExercise.id)} className={styles.button}>
+                                        Save
+                                    </button>
+                                    <button onClick={cancel} className={styles.button}>
+                                        Cancel
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 )}
             </div>

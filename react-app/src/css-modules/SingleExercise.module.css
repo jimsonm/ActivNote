@@ -37,6 +37,7 @@
 
 .input3 {
   height: 60vh;
+  resize: none;
 }
 
 .SingleExerciseContainer {
