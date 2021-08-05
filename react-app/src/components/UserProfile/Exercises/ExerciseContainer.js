@@ -37,9 +37,13 @@ function ExerciseContainer() {
                         <div className={styles.individualExerciseContainer}>
                             {exercises.map((exercise) => (
                                 <div onClick={() => displayDetails(exercise.id)} key={exercise.id} className={styles.exerciseNames}>
+                                    <div className={styles.exerciseTitle}>
                                     {exercise.exercise_name}
+                                    </div>
                                     <br />
+                                    <div className={styles.exerciseNotes}>
                                     {exercise.notes}
+                                    </div>
                                 </div>
                             ))}
                         </div>
@@ -47,7 +51,7 @@ function ExerciseContainer() {
                 </div>
                 <div className={styles.ExerciseDetails}>
                     {!selected && (
-                        <div>
+                        <div className={styles.pleaseSelect}>
                             Please select an exercise to view its details.
                         </div>
                     )}
