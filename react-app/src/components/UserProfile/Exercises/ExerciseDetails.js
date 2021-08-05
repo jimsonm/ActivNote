@@ -84,7 +84,6 @@ function ExerciseDetails({ exercise, setCurrentExercise, setSelected, isForm, se
                         <div className={styles.CaloriesTitle}>
                             Calories burned/min
                         </div>
-                        {/* <br /> */}
                         <div className={styles.CaloriesInfo}>
                             {currentExercise.calories_burned}
                         </div>
@@ -93,7 +92,6 @@ function ExerciseDetails({ exercise, setCurrentExercise, setSelected, isForm, se
                         <div className={styles.NotesTitle}>
                             Notes
                         </div>
-                        {/* <br /> */}
                         <div className={styles.NotesInfo}>
                             {currentExercise.notes}
                         </div>
@@ -148,7 +146,7 @@ function ExerciseDetails({ exercise, setCurrentExercise, setSelected, isForm, se
                             value={notes}
                             placeholder='Notes about your exercise'
                             onChange={(e) => setNotes(e.target.value)}
-                            className={styles.input2}
+                            className={styles.input3}
                         />
                     </div>
                 </form>

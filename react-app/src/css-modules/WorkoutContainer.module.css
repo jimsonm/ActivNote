@@ -4,6 +4,8 @@
   padding: 0;
   height: 100vh;
   width: 100%;
+  background-color: #1A1A1A;
+  color: white;
 }
 
 .InnerWorkoutContainer {
@@ -34,7 +36,7 @@
   height: calc(100vh - 58px);
   overflow-y: scroll;
   width: calc(100vw - 200px);
-  background-color: white;
+  /* background-color: white; */
   z-index: 0;
   border-right: 1px gray solid;
 }
@@ -43,6 +45,8 @@
   width: auto;
   padding: 20px 20px;
   border-bottom: 1px gray solid;
+  background-color: #1A1A1A;
+  color: white;
   /* overflow: hidden;
     height: 80px; */
 }

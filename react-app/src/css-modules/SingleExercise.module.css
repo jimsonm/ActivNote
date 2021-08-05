@@ -4,15 +4,16 @@
 }
 
 .input1,
-.input2 {
+.input2,
+.input3 {
   width: 100%;
 }
 
 .input1[type="text"],
-.input2[type="text"] {
+.input2[type="text"],
+.input3[type='text'] {
   margin: 0;
   padding: 0;
-  /* font-size: 16px; */
   font-family: Times;
   border: 0;
   color: white;
@@ -20,7 +21,8 @@
 }
 
 .input1:hover,
-.input2:hover {
+.input2:hover,
+.input3:hover {
   border: 1px solid white;
 }
 
@@ -28,8 +30,13 @@
   font-size: 30px;
 }
 
-.input2 {
+.input2,
+.input3 {
   font-size: 16px;
+}
+
+.input3 {
+  height: 60vh;
 }
 
 .SingleExerciseContainer {
@@ -39,6 +46,7 @@
   padding: 10px;
   width: 100%;
   min-width: 565px;
+  min-height: 80vh;
   color: white;
 }
 
@@ -70,4 +78,9 @@
 .NotesInfo {
   font-size: 16px;
   text-decoration: none !important;
+}
+
+.NotesInfo {
+  height: 60vh;
+  overflow-y: scroll;
 }
