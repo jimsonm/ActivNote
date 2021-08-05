@@ -9,7 +9,7 @@ import { GoChevronRight, GoChevronDown } from "react-icons/go";
 import { FaRegEdit, FaSave, FaTrashAlt, FaPlusSquare } from "react-icons/fa";
 import AddActivityModal from './AddActivityModal'
 
-function ActivityContainer() {
+function ActivityContainer({setShowIcons}) {
     const dispatch = useDispatch();
     const { userId } = useParams();
     const activities = useSelector(state => Object.values(state.activity))
@@ -34,9 +34,11 @@ function ActivityContainer() {
         dispatch(getCurrentExercise(activity.exercise_id))
         if (!details) {
             setDetails(true)
+            setShowIcons(true)
         }
         if (details && currActivityId === activity.id) {
             setDetails(false)
+            setShowIcons(false)
         }
     }
 

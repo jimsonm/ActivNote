@@ -8,11 +8,11 @@
   color: white;
 }
 
-.InnerWorkoutContainer {
+/* .InnerWorkoutContainer {
 }
 
 .WorkoutNameContainer {
-}
+} */
 
 .title {
   display: inline-flex;
@@ -36,7 +36,6 @@
   height: calc(100vh - 58px);
   overflow-y: scroll;
   width: calc(100vw - 200px);
-  /* background-color: white; */
   z-index: 0;
   border-right: 1px gray solid;
 }
@@ -47,8 +46,6 @@
   border-bottom: 1px gray solid;
   background-color: #1A1A1A;
   color: white;
-  /* overflow: hidden;
-    height: 80px; */
 }
 
 .iconsDiv {
@@ -57,5 +54,19 @@
 }
 
 .icon:hover {
+  cursor: pointer;
+}
+
+.workoutTitleDiv {
+  display: inline-flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.iconR {
+  margin: 0px 50px;
+}
+
+.iconR:hover {
   cursor: pointer;
 }
