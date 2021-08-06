@@ -3,6 +3,11 @@ import styles from '../../../css-modules/NavBar.module.css';
 import AddModal from './AddModal';
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { FaHome, FaDumbbell } from "react-icons/fa";
+import LogoutButton from '../../auth/LogoutButton';
+import { GiMuscleUp } from "react-icons/gi";
+import { AiFillGithub, AiFillLinkedin } from "react-icons/ai";
+
 
 function NavBar() {
     const { userId } = useParams();
@@ -33,16 +38,32 @@ function NavBar() {
             </div>
             <AddModal />
             <NavLink to={`/user/${userId}`} exact={true} className={styles.NavDiv}>
-                Home
+                <FaHome className={styles.icons} />
+                <div>
+                    Home
+                </div>
             </NavLink>
             <NavLink to={`/user/${userId}/exercises`} exact={true} className={styles.NavDiv}>
-                Exercises
+                <FaDumbbell className={styles.icons} />
+                <div>
+                    Exercises
+                </div>
             </NavLink>
             <NavLink to={`/user/${userId}/workouts`} exact={true} className={styles.NavDiv}>
-                Workouts
+                <GiMuscleUp className={styles.icons} />
+                <div>
+                    Workouts
+                </div>
             </NavLink>
-            <a href='https://github.com/jimsonm/ActivNote' target='_blank' rel='noopener noreferrer' className={styles.NavDiv}>Github</a>
-            <a href='https://www.linkedin.com/in/jimson-ma-462197213/' target='_blank' rel='noopener noreferrer' className={styles.NavDiv}>Linkedin</a>
+            <a href='https://github.com/jimsonm/ActivNote' target='_blank' rel='noopener noreferrer' className={styles.NavDiv}>
+                <AiFillGithub className={styles.icons} />
+                Github
+            </a>
+            <a href='https://www.linkedin.com/in/jimson-ma-462197213/' target='_blank' rel='noopener noreferrer' className={styles.NavDiv}>
+                <AiFillLinkedin className={styles.icons} />
+                Linkedin
+            </a>
+            <LogoutButton />
         </div>
     )
 }

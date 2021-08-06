@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useParams} from 'react-router-dom';
-import LogoutButton from '../auth/LogoutButton';
-// import { useSelector } from 'react-redux';
 import NavBar from './Navbar';
 
 function User() {
@@ -27,7 +25,6 @@ function User() {
   return (
     <div>
       <NavBar />
-      <LogoutButton />
     </div>
   );
 }

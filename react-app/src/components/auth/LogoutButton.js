@@ -1,6 +1,8 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { logout } from '../../store/session';
+import { BiLogOut } from "react-icons/bi";
+import styles from '../../css-modules/Logout.module.css'
 
 const LogoutButton = () => {
   const dispatch = useDispatch()
@@ -8,7 +10,12 @@ const LogoutButton = () => {
     await dispatch(logout());
   };
 
-  return <button onClick={onLogout}>Logout</button>;
+  return (
+    <div onClick={onLogout} className={styles.LogoutDiv}>
+      <BiLogOut className={styles.icons}/>
+      Logout
+    </div>
+  )
 };
 
 export default LogoutButton;

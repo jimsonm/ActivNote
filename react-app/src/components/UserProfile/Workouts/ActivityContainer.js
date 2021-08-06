@@ -133,7 +133,7 @@ function ActivityContainer({setShowIcons}) {
                         {currActivityId === activity.id && details && (
                             <>
                                 {errors && (
-                                    <div>
+                                    <div className={styles.errors}>
                                         {errors}
                                     </div>
                                 )}
