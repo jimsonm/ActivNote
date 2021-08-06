@@ -1,6 +1,5 @@
 const SET_EXERCISES = 'exercises/SET_EXERCISES';
 const DELETE_EXERCISE = 'exercises/DELETE_EXERCISE'
-// const GET_EXERCISE = 'exercises/GET_EXERCISE';
 
 const setExercises = (exercises) => ({
     type: SET_EXERCISES,
@@ -11,11 +10,6 @@ const deleteEx = (exercise) => ({
     type: DELETE_EXERCISE,
     payload: exercise
 })
-
-// const getExercise = (exercise) => ({
-//     type: GET_EXERCISE,
-//     payload: exercise
-// })
 
 export const getExercises = (userId) => async (dispatch) => {
     const response = await fetch(`/api/exercises/all/${userId}`)

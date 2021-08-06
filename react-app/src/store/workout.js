@@ -29,6 +29,19 @@ export const getWorkoutById = (workoutId) => async (dispatch) => {
     }
 }
 
+export const editWorkout = (payload) => async (dispatch) => {
+    const response = await fetch(`/api/workouts/${payload.id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+    })
+    if (response.ok) {
+        dispatch(getWorkouts(payload.user_id))
+    }
+}
+
 export const deleteWorkout = (payload) => async (dispatch) => {
     const response = await fetch(`/api/workouts/${payload.id}`, {
         method: 'DELETE'
