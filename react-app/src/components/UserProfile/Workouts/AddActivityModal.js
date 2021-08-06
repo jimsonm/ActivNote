@@ -21,7 +21,7 @@ function AddActivityModal({ setShowAddActivityModal }) {
             dispatch(getCurrentActivity(0))
             dispatch(getCurrentWorkout(0))
         }
-    }, [])
+    }, [dispatch])
 
     const save = async (e, exerciseId) => {
         e.preventDefault();

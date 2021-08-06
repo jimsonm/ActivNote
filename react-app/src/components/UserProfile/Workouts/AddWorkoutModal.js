@@ -33,7 +33,6 @@ function AddWorkoutModal({ setShowAddWorkoutModal }) {
         e.preventDefault()
         setAppendActivities(true)
         setShowAddActivityModal(true)
-        // setShowAddWorkoutModal(false)
         dispatch(getCurrentWorkout(newWorkoutId))
         dispatch(getExercises(user_id))
         setDidAdd(true)
