@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams, NavLink } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { getExercises, getExerciseById } from '../../../store/exercise';
 import ExerciseDetails from './ExerciseDetails';
 import styles from '../../../css-modules/ExerciseContainer.module.css';

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { editExercise, getExercises } from '../../../store/exercise'
-import { getActivities, editActivity, deleteActivity } from '../../../store/activity'
+import { getExercises } from '../../../store/exercise'
+import { editActivity, deleteActivity } from '../../../store/activity'
 import { useParams } from 'react-router-dom'
 import { getCurrentExercise, getCurrentActivity } from '../../../store/current'
 import styles from '../../../css-modules/ActivityContainer.module.css'
@@ -14,7 +14,6 @@ function ActivityContainer({setShowIcons}) {
     const { userId } = useParams();
     const activities = useSelector(state => Object.values(state.activity))
     const exercises = useSelector(state => state.exercise)
-    const currExerciseId = useSelector(state => state.current.currentExerciseId)
     const currActivityId = useSelector(state => state.current.currentActivityId)
     const [details, setDetails] = useState(false)
     const [isInput, setIsInput] = useState(false)
@@ -117,7 +116,7 @@ function ActivityContainer({setShowIcons}) {
                                     <FaRegEdit onClick={(e) => edit(e, activity)} className={styles.iconR} />
                                 </>
                             )}
-                            {isInput && currActivityId === activity.    id && details && (
+                            {isInput && currActivityId === activity.id && details && (
                                 <>
                                     <FaSave onClick={(e) => updateActivity(e, activity)} className={styles.iconR} />
                                 </>

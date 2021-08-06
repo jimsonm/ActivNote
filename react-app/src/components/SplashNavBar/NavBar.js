@@ -1,10 +1,8 @@
 
 import React from 'react';
 import { useDispatch } from 'react-redux'
-import { NavLink, useHistory } from 'react-router-dom';
-// import LogoutButton from '../auth/LogoutButton';
+import { useHistory } from 'react-router-dom';
 import LoginFormModal from './LoginFormModal';
-import SignUpFormModal from './SignUpFormModal';
 import styles from '../../css-modules/SplashPageNavBar.module.css'
 import { login } from '../../store/session'
 
@@ -27,9 +25,6 @@ const SplashNavBar = () => {
         <div className={styles.button}>
           <button onClick={DemoLogin} className={styles.demoButton}>Demo</button>
         </div>
-        {/* <div className={styles.button}>
-          <SignUpFormModal buttontext={'Sign Up'} />
-        </div> */}
         <div className={styles.button}>
           <LoginFormModal buttontext={'Login'} />
         </div>
