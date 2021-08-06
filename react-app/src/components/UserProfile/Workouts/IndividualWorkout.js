@@ -7,6 +7,7 @@ import ActivityContainer from './ActivityContainer';
 import { getWorkoutById } from '../../../store/workout'
 import { getActivities } from "../../../store/activity";
 import { getCurrentWorkout } from '../../../store/current'
+import { deleteWorkout } from '../../../store/workout'
 
 function IndividualWorkout({workout}) {
     const dispatch = useDispatch()
@@ -32,6 +33,14 @@ function IndividualWorkout({workout}) {
         }
     }
 
+    const removeWorkout = async () => {
+        dispatch(deleteWorkout(workout))
+    }
+
+    const editWorkout = async () => {
+
+    }
+
     return (
         <>
             <div key={workout.id} className={styles.WorkoutNames}>
@@ -52,7 +61,7 @@ function IndividualWorkout({workout}) {
                         {!showIcons && current['currentWorkoutId'] === workout.id && (
                             <>
                                 <FaRegEdit className={styles.iconR} />
-                                <FaTrashAlt className={styles.iconR} />
+                                <FaTrashAlt className={styles.iconR} onClick={removeWorkout}/>
                             </>
                         )}
                     </div>
