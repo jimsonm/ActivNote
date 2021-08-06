@@ -44,13 +44,18 @@
   font-family: Times;
   background-color: transparent;
   color: white;
+  border: 1px solid white;
 }
 
-.inputs:hover {
-    border: 1px solid black;
-  }
+/* .inputs:hover {
+  border: 1px solid black;
+} */
 
 .activityInfo {
   padding-left: 25px;
   margin: 10px 0px;
+}
+
+.errors {
+  padding: 0px 25px;
 }

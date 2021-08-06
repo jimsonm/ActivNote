@@ -18,13 +18,14 @@
   border: 0;
   color: white;
   background-color: transparent;
+  border: 1px solid white;
 }
 
-.input1:hover,
+/* .input1:hover,
 .input2:hover,
 .input3:hover {
   border: 1px solid white;
-}
+} */
 
 .input1 {
   font-size: 30px;

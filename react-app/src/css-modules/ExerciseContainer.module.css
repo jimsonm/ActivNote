@@ -79,7 +79,7 @@
     height: calc(100vh - 58px);
     overflow-y: scroll;
     width: 300px;
-    background-color: white;
+    background-color: transparent;
     z-index: 0;
     border-right: 1px gray solid;
 }

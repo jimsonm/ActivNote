@@ -1,0 +1,14 @@
+.icons {
+  margin: 10px;
+}
+
+.LogoutDiv {
+  text-decoration: none;
+  color: #a6a6a6;
+  display: inline-flex;
+  align-items: center;  
+}
+
+.LogoutDiv:hover {
+    cursor: pointer;
+}
