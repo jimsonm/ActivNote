@@ -21,3 +21,17 @@
     border: 2px solid #00a82d;
     border-radius: 3px;
 }
+
+.navLeft {
+    display: inline-flex;
+    align-items: center;
+}
+
+.logo {
+    width: 100px;
+    height: 100px;
+}
+
+.title {
+    font-size: 36px;
+}

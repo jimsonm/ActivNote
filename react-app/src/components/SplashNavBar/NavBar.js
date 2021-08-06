@@ -1,10 +1,10 @@
-
 import React from 'react';
 import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom';
 import LoginFormModal from './LoginFormModal';
 import styles from '../../css-modules/SplashPageNavBar.module.css'
 import { login } from '../../store/session'
+import logo from '../assets/Mechanical-Arm.png'
 
 const SplashNavBar = () => {
   const dispatch = useDispatch();
@@ -18,8 +18,11 @@ const SplashNavBar = () => {
 
   return (
     <nav className={styles.navBarContainer}>
-      <div>
-        ActivNote
+      <div className={styles.navLeft}>
+        <img src={logo} className={styles.logo} />
+        <div className={styles.title}>
+          ActivNote
+        </div>
       </div>
       <div className={styles.navBarButtonDiv}>
         <div className={styles.button}>

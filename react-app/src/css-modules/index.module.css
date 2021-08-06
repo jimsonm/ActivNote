@@ -5,6 +5,18 @@
   background-color: #1a1a1a;
   color: white;
 }
+
+.welcome {
+    font-size: 50px;
+    font-family: 'MonteCarlo', cursive;
+}
+
+.welcome2 {
+    font-size: 26px;
+    font-family: 'Comfortaa', cursive;
+    margin-bottom: 20px;
+}
+
 .homeContainer {
   width: 100%;
   margin: 25px;
@@ -30,6 +42,7 @@
 
 .exerciseInfoContainer {
   min-width: 150px;
+  max-width: 150px;
   height: 250px;
   border: 1px solid gray;
   margin: 0px 15px 30px 15px;

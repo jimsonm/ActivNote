@@ -62,19 +62,31 @@
 }
 
 .buttons {
-    background-color: #00a82d;
-    border-radius: 3px;
-    color: white;
-    box-shadow: none;
-    border: 0;
+  background-color: #00a82d;
+  border-radius: 3px;
+  color: white;
+  box-shadow: none;
+  border: 0;
 }
 
 .buttons:hover {
-    background-color: #008f26;
+  background-color: #008f26;
 }
 
 .haveAccountSignInButton {
-    border: none;
-    background-color: white;
-    color: #00a82d;
+  border: none;
+  background-color: white;
+  color: #00a82d;
+}
+
+.logoContainer {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.logo {
+  width: 100px;
+  height: 100px;
 }

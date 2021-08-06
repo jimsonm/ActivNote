@@ -14,3 +14,23 @@ button:hover {
     align-items: center;
     width: 100%;
 }
+
+.title1,
+.title2 {
+    font-family: 'Libre Baskerville', serif;
+    margin: 20px;
+}
+
+.title1 {
+    font-size: 40px;
+}
+
+.title2 {
+    font-size: 24px;
+}
+
+.signup {
+    margin: 20px;
+    width: 250px;
+    height: 60px;
+}
