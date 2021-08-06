@@ -2,11 +2,13 @@ import { useState } from 'react';
 import styles from '../../../../css-modules/AddModal.module.css'
 import ExerciseForm from './AddExercise';
 import WorkoutForm from './AddWorkout';
+import AddWorkoutModal from '../../Workouts/AddWorkoutModal';
 
 function Add({setShowModal}) {
     const [createExercise, setCreateExercise] = useState(false);
     const [createWorkout, setCreateWorkout] = useState(false);
     const [chosen, setChosen] = useState(false);
+    const [showAddWorkoutModal, setShowAddWorkoutModal] = useState(false);
 
     const openExerciseForm = () => {
         setChosen(true)
@@ -15,7 +17,7 @@ function Add({setShowModal}) {
 
     const openWorkoutForm = () => {
         setChosen(true)
-        setCreateWorkout(true)
+        setShowAddWorkoutModal(true)
     }
 
     return (
@@ -29,8 +31,8 @@ function Add({setShowModal}) {
             {createExercise && (
                 <ExerciseForm setShowModal={setShowModal} setChosen={setChosen} setCreateExercise={setCreateExercise}/>
             )}
-            {createWorkout && (
-                <WorkoutForm setShowModal={setShowModal}/>
+            {showAddWorkoutModal && (
+                <AddWorkoutModal setShowAddWorkoutModal={setShowModal}/>
             )}
         </div>
     )

@@ -51,6 +51,28 @@ export const deleteWorkout = (payload) => async (dispatch) => {
     }
 }
 
+export const addWorkout = (payload) => async (dispatch) => {
+    const response = await fetch('/api/workouts/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload)
+    })
+    if (response.ok) {
+        const data = await response.json()
+        dispatch(getWorkouts(payload.user_id))
+        return data;
+    } else if (response.status < 500) {
+        const data = await response.json();
+        if (data.errors) {
+            return data.errors;
+        }
+    } else {
+        return ['An error occurred. Please try again.']
+    }
+}
+
 const initialState = {};
 
 export default function reducer(state = initialState, action) {
