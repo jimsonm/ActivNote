@@ -21,11 +21,16 @@ function WorkoutContainer() {
             <div className={styles.InnerWorkoutContainer}>
                 <div className={styles.WorkoutNameContainer}>
                     <div className={styles.title}>
-                        Workouts
+                        <div>
+                            Workouts
+                        </div>
+                        <button className={styles.button}>
+                            Add Workout
+                        </button>
                     </div>
                     <div className={styles.individualWorkoutContainer}>
                         {workouts.map((workout) => (
-                            <IndividualWorkout workout={workout} key={workout.id}/>
+                            <IndividualWorkout workout={workout} key={workout.id} />
                         ))}
                     </div>
                 </div>

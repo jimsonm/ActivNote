@@ -62,7 +62,7 @@ function ExerciseForm({setShowModal, setChosen, setCreateExercise}) {
     }
     return (
         <div className={styles.container}>
-            <IoReturnUpBackSharp onClick={back}/>  
+            <IoReturnUpBackSharp onClick={back} className={styles.icon}/>  
             <br />
             Create A New Exercise
             <form onSubmit={createExercise} className={styles.Form}>
