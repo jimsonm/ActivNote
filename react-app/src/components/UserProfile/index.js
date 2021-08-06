@@ -1,11 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { useParams} from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import NavBar from './Navbar';
+import styles from '../../css-modules/index.module.css'
+import { getExercises } from '../../store/exercise'
+import { useDispatch, useSelector } from 'react-redux'
 
 function User() {
   const [user, setUser] = useState({});
   const { userId } = useParams();
+  const dispatch = useDispatch();
   // const userProfile = useSelector(state => state.session.user)
+  const exercises = useSelector(state => Object.values(state.exercise))
+  console.log(exercises)
 
   useEffect(() => {
     if (!userId) {
@@ -18,13 +24,36 @@ function User() {
     })();
   }, [userId]);
 
+  useEffect(() => {
+    dispatch(getExercises(userId))
+  }, [dispatch, userId])
+
   if (!user) {
     return null;
   }
 
   return (
-    <div>
+    <div className={styles.container}>
       <NavBar />
+      <div className={styles.homeContainer}>
+        <div className={styles.previewContainer}>
+          <div className={styles.title}>
+            Exercises
+          </div>
+          <div className={styles.exercisesList}>
+            {exercises.map((exercise) => (
+              <div className={styles.exerciseInfoContainer}>
+                <div className={styles.exerciseTitle}>
+                  {exercise.exercise_name}
+                </div>
+                <div className={styles.exerciseNotes}>
+                  {exercise.notes}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

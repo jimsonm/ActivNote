@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { FaRegEdit, FaSave, FaTrashAlt } from "react-icons/fa";
 import { GoTriangleRight, GoTriangleDown } from "react-icons/go";
 import ActivityContainer from './ActivityContainer';
-import { getWorkoutById } from '../../../store/workout'
+// import { getWorkoutById } from '../../../store/workout'
 import { getActivities } from "../../../store/activity";
 import { getCurrentActivity, getCurrentWorkout } from '../../../store/current'
 import { deleteWorkout, editWorkout } from '../../../store/workout'
@@ -28,7 +28,7 @@ function IndividualWorkout({ workout }) {
             dispatch(getCurrentActivity(0))
             dispatch(getCurrentWorkout(0))
         }
-    }, [])
+    }, [dispatch])
 
     const displayActivities = async () => {
         // const selectedWorkout = await dispatch(getWorkoutById(id))
@@ -61,7 +61,6 @@ function IndividualWorkout({ workout }) {
 
     const updateWorkout = async (e) => {
         e.preventDefault()
-        console.log(workout)
         const payload = {
             workout_name: workout_name,
             user_id: workout.user_id,
