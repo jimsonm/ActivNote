@@ -4,6 +4,7 @@ import { Redirect, useHistory } from 'react-router-dom';
 import { signUp, login } from '../../../store/session';
 import styles from '../../../css-modules/SignUpForm.module.css';
 import LoginForm from '../LoginFormModal/LoginForm';
+import logo from '../../assets/Mechanical-Arm.png'
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
@@ -62,6 +63,9 @@ const SignUpForm = () => {
   }
   else return (
     <div className={styles.SignUpFormContainer}>
+      <div className={styles.logoContainer}>
+        <img src={logo} className={styles.logo} />
+      </div>
       <div className={styles.CenterText}>
         ActivNote
       </div>

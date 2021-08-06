@@ -17,13 +17,13 @@ function SplashPage() {
 
     return (
         <div className={styles.Centered}>
-            <div>
-                Tame your work, organize your life
+            <div className={styles.title1}>
+                Tame your workouts, organize your fitness
             </div>
-            <div>
-                Remember everything and tackle any project with your notes, tasks, and schedule all in one place.
+            <div className={styles.title2}>
+                Remember everything and tackle any fitness goals with your notes, ideas, and routines all in one place.
             </div>
-            <div>
+            <div className={styles.signup}>
                 <SignUpFormModal buttontext={'Sign up for free'} />
             </div>
             <div>

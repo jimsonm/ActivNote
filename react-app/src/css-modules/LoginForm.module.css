@@ -84,3 +84,15 @@
   background-color: white;
   color: #00a82d;
 }
+
+.logoContainer {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.logo {
+  width: 100px;
+  height: 100px;
+}

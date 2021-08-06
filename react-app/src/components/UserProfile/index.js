@@ -36,6 +36,12 @@ function User() {
     <div className={styles.container}>
       <NavBar />
       <div className={styles.homeContainer}>
+        <div className={styles.welcome}>
+          Welcome to ActivNote!
+        </div>
+        <div className={styles.welcome2}>
+          Take control of your fitness by organizing and creating your own workouts.
+        </div>
         <div className={styles.previewContainer}>
           <div className={styles.title}>
             Exercises

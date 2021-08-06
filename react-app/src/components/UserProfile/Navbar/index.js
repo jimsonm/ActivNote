@@ -3,7 +3,7 @@ import styles from '../../../css-modules/NavBar.module.css';
 import AddModal from './AddModal';
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { FaHome, FaDumbbell } from "react-icons/fa";
+import { FaHome, FaDumbbell, FaUser } from "react-icons/fa";
 import LogoutButton from '../../auth/LogoutButton';
 import { GiMuscleUp } from "react-icons/gi";
 import { AiFillGithub, AiFillLinkedin } from "react-icons/ai";
@@ -30,10 +30,11 @@ function NavBar() {
     }
     return (
         <div className={styles.NavBar}>
-            <div className={styles.NavDiv}>
+            {/* <div className={styles.NavDiv}>
                 {userProfile.id}
-            </div>
+            </div> */}
             <div className={styles.NavDiv}>
+                <FaUser className={styles.icons}/>
                 {userProfile.email}
             </div>
             <AddModal />
