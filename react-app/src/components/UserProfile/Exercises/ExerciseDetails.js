@@ -7,7 +7,6 @@ import { editExercise, deleteExercise } from '../../../store/exercise';
 function ExerciseDetails({ exercise, setCurrentExercise, setSelected, isForm, setIsForm }) {
     const currExId = exercise.id
     const currentExercise = useSelector(state => state.exercise[currExId])
-    console.log(currentExercise)
     const { userId } = useParams();
     const dispatch = useDispatch();
     const exerciseId = currentExercise.id

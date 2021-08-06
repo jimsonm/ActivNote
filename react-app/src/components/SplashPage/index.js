@@ -12,7 +12,6 @@ function SplashPage() {
 
     if (user) {
         const userId = user.id
-        console.log(userId)
         return <Redirect to={`/user/${userId}`} />;
     }
 

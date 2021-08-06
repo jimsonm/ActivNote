@@ -36,7 +36,6 @@ function ExerciseForm({setShowModal, setChosen, setCreateExercise}) {
                 user_id: userId
             }
             const data = await dispatch(addExercise(payload))
-            console.log(data)
             const id = data.id
             if (id) {
                 history.push(`/user/${userId}/exercises`)
@@ -63,7 +62,7 @@ function ExerciseForm({setShowModal, setChosen, setCreateExercise}) {
     }
     return (
         <div className={styles.container}>
-            <IoReturnUpBackSharp onClick={back}/>  
+            <IoReturnUpBackSharp onClick={back} className={styles.icon}/>  
             <br />
             Create A New Exercise
             <form onSubmit={createExercise} className={styles.Form}>

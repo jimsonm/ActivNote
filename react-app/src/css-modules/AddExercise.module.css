@@ -43,3 +43,7 @@
 .button:hover {
   background-color: #008f26;
 }
+
+.icon:hover {
+  cursor: pointer;
+}

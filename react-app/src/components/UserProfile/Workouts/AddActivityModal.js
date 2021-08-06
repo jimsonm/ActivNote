@@ -17,8 +17,6 @@ function AddActivityModal({ setShowAddActivityModal }) {
 
     const save = async (e, exerciseId) => {
         e.preventDefault();
-        console.log(workoutId)
-        console.log(selectExercise.id)
         if (!Number(sets) || !Number(repetitions) || !Number(duration)) {
             setErrors('Please make sure all inputs are integer values.')
         } else {
