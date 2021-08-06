@@ -18,28 +18,37 @@ function IndividualWorkout({ workout }) {
     const [workoutForm, setWorkoutForm] = useState(false)
     const [workout_name, setWorkout_Name] = useState(workout.workout_name)
 
+    // if(currWorkoutId === workout.id) {
+    //     console.log('rerender', showIcons)
+    //     console.log('rerenver', currWorkoutId, workout.id)
+    // }
+
     useEffect(() => {
         return function cleanup() {
             dispatch(getCurrentActivity(0))
             dispatch(getCurrentWorkout(0))
         }
-    },[])
+    }, [])
 
-    const displayActivities = async (id) => {
-        const workout = await dispatch(getWorkoutById(id))
+    const displayActivities = async () => {
+        // const selectedWorkout = await dispatch(getWorkoutById(id))
         await dispatch(getActivities(workout.id))
         await dispatch(getCurrentWorkout(workout.id))
         if (!showActivities) {
             setShowActivities(true)
         }
-        if (showActivities && currWorkoutId === id) {
+        if (showActivities && currWorkoutId === workout.id) {
             setShowActivities(false)
         }
-        if (!showIcons && currWorkoutId === id && showActivities) {
+        if (!showIcons && currWorkoutId === workout.id && showActivities) {
             setShowIcons(true)
-        } else if (showIcons && currWorkoutId === id && !showActivities) {
+        } else if (showIcons && currWorkoutId === workout.id && !showActivities) {
             setShowIcons(false)
         }
+        // else if (showIcons && currWorkoutId === workout.id && showActivities) {
+        //     setShowIcons(false)
+        // }
+        //false and matching will display icons
     }
 
     const removeWorkout = async () => {
@@ -68,13 +77,13 @@ function IndividualWorkout({ workout }) {
                 <div className={styles.workoutTitleDiv}>
                     <div className={styles.iconsDiv1}>
                         {showActivities && current['currentWorkoutId'] === workout.id && (
-                            <GoTriangleDown onClick={() => displayActivities(workout.id)} className={styles.icon} />
+                            <GoTriangleDown onClick={() => displayActivities()} className={styles.icon} />
                         )}
                         {showActivities && current['currentWorkoutId'] !== workout.id && (
-                            <GoTriangleRight onClick={() => displayActivities(workout.id)} className={styles.icon} />
+                            <GoTriangleRight onClick={() => displayActivities()} className={styles.icon} />
                         )}
                         {!showActivities && (
-                            <GoTriangleRight onClick={() => displayActivities(workout.id)} className={styles.icon} />
+                            <GoTriangleRight onClick={() => displayActivities()} className={styles.icon} />
                         )}
                         {!workoutForm && (
                             <>
@@ -103,7 +112,7 @@ function IndividualWorkout({ workout }) {
                                     </>
                                 )}
                                 {workoutForm && (
-                                    <FaSave className={styles.iconR} onClick={updateWorkout}/>
+                                    <FaSave className={styles.iconR} onClick={updateWorkout} />
                                 )}
                             </>
                         )}

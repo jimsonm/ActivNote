@@ -47,7 +47,6 @@ def deleteActivity(activityId):
 def createActivity():
     form = ActivityForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    print(form.data)
     if form.validate_on_submit():
         activity = Activity(
             sets=form.data['sets'],
