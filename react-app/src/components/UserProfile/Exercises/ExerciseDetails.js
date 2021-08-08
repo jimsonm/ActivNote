@@ -79,7 +79,7 @@ function ExerciseDetails({ exercise, setCurrentExercise, setSelected, isForm, se
                     <div className={styles.Name}>
                         {currentExercise.exercise_name}
                     </div>
-                    <div>
+                    <div className={styles.Calories}>
                         <div className={styles.CaloriesTitle}>
                             Calories burned/min
                         </div>
@@ -87,7 +87,7 @@ function ExerciseDetails({ exercise, setCurrentExercise, setSelected, isForm, se
                             {currentExercise.calories_burned}
                         </div>
                     </div>
-                    <div>
+                    <div className={styles.Notes}>
                         <div className={styles.NotesTitle}>
                             Notes
                         </div>

@@ -95,7 +95,7 @@ function ActivityContainer({setShowIcons}) {
             )}
             {activities.map((activity) => (
                 <div key={activity.id} className={styles.indivActivity}>
-                    <div>
+                    <div className={styles.indivActivityContainer}>
                         <div className={styles.iconsDiv}>
                             {details && currActivityId === activity.id && (
                                 <GoChevronDown onClick={(e) => expandDetails(e, activity)} className={styles.icon} />

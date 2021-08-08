@@ -5,6 +5,7 @@
   height: 100vh;
   padding-right: 10px;
   background-color: black;
+  justify-content: space-between;
 }
 
 body {
@@ -22,4 +23,10 @@ body {
 
 .icons {
   margin: 10px;
+}
+
+.Nav1,
+.Nav2 {
+  display: inline-flex;
+  flex-direction: column;
 }

@@ -16,7 +16,7 @@
 .ExerciseNameContainer {
   /* width: 300px; */
   /* height: 100vh; */
-  overflow-y: scroll;
+  overflow: auto;
   margin-bottom: 80px;
 }
 
@@ -78,7 +78,7 @@
   margin-top: 58px;
   position: fixed;
   height: calc(100vh - 58px);
-  overflow-y: scroll;
+  overflow: auto;
   width: 300px;
   background-color: transparent;
   z-index: 0;
