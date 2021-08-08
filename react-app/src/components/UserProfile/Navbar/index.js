@@ -33,6 +33,7 @@ function NavBar() {
             {/* <div className={styles.NavDiv}>
                 {userProfile.id}
             </div> */}
+            <div className={styles.Nav1}>
             <div className={styles.NavDiv}>
                 <FaUser className={styles.icons}/>
                 {userProfile.email}
@@ -56,6 +57,9 @@ function NavBar() {
                     Workouts
                 </div>
             </NavLink>
+            <LogoutButton />
+            </div>
+            <div className={styles.Nav2}>
             <a href='https://github.com/jimsonm/ActivNote' target='_blank' rel='noopener noreferrer' className={styles.NavDiv}>
                 <AiFillGithub className={styles.icons} />
                 Github
@@ -64,7 +68,7 @@ function NavBar() {
                 <AiFillLinkedin className={styles.icons} />
                 Linkedin
             </a>
-            <LogoutButton />
+            </div>
         </div>
     )
 }

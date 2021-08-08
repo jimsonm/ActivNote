@@ -1,12 +1,13 @@
 .title {
   display: flex;
   justify-content: space-between;
+  margin: 10px 0px;
 }
 
 .input1,
 .input2,
 .input3 {
-  width: 100%;
+  width: calc(100% - 12px);
 }
 
 .input1[type="text"],
@@ -19,6 +20,12 @@
   color: white;
   background-color: transparent;
   border: 1px solid white;
+}
+
+.input1[type='text'],
+.input2[type="text"],
+.input3[type='text'] {
+  padding: 5px 5px;
 }
 
 /* .input1:hover,
@@ -68,18 +75,26 @@
 
 .Name {
   font-size: 30px;
+  margin: 2px 0px;
+}
+
+.Calories,
+.Notes {
+  margin: 2px 0px;
 }
 
 .CaloriesTitle,
 .NotesTitle {
   font-size: 22px;
   text-decoration: underline;
+  margin: 7px 0px;
 }
 
 .CaloriesInfo,
 .NotesInfo {
   font-size: 16px;
   text-decoration: none !important;
+  padding: 5px;
 }
 
 .NotesInfo {

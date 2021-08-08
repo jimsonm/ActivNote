@@ -11,7 +11,6 @@ function User() {
   const dispatch = useDispatch();
   // const userProfile = useSelector(state => state.session.user)
   const exercises = useSelector(state => Object.values(state.exercise))
-  console.log(exercises)
 
   useEffect(() => {
     if (!userId) {
@@ -42,21 +41,23 @@ function User() {
         <div className={styles.welcome2}>
           Take control of your fitness by organizing and creating your own workouts.
         </div>
-        <div className={styles.previewContainer}>
-          <div className={styles.title}>
-            Exercises
-          </div>
-          <div className={styles.exercisesList}>
-            {exercises.map((exercise) => (
-              <div className={styles.exerciseInfoContainer}>
-                <div className={styles.exerciseTitle}>
-                  {exercise.exercise_name}
+        <div className={styles.previewContainerDiv}>
+          <div className={styles.previewContainer}>
+            <div className={styles.title}>
+              Exercises
+            </div>
+            <div className={styles.exercisesList}>
+              {exercises.map((exercise) => (
+                <div className={styles.exerciseInfoContainer}>
+                  <div className={styles.exerciseTitle}>
+                    {exercise.exercise_name}
+                  </div>
+                  <div className={styles.exerciseNotes}>
+                    {exercise.notes}
+                  </div>
                 </div>
-                <div className={styles.exerciseNotes}>
-                  {exercise.notes}
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </div>

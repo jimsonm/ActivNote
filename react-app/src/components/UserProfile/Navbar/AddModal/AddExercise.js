@@ -56,6 +56,10 @@ function ExerciseForm({setShowModal, setChosen, setCreateExercise}) {
         setNotes(e.target.value)
     }
 
+    const close = () => {
+        setShowModal(false)
+    }
+
     const back = () => {
         setChosen(false)
         setCreateExercise(false)
@@ -99,7 +103,7 @@ function ExerciseForm({setShowModal, setChosen, setCreateExercise}) {
                     className={styles.input3}
                 />
                 <button type='submit' className={styles.button}>Submit</button>
-                <button onClick={() => setShowModal(false)} className={styles.button}>Cancel</button>
+                <button onClick={close} className={styles.button}>Cancel</button>
             </form>
         </div>
     )

@@ -1,7 +1,8 @@
 .hasAccountButton {
     border: none;
-    background-color: white;
+    background-color: transparent;
     text-decoration: underline;
+    color: white;
 }
 
 button:hover {
@@ -13,6 +14,9 @@ button:hover {
     flex-direction: column;
     align-items: center;
     width: 100%;
+    background-color: #1A1A1A;
+    color: white;
+    height: 100vh;
 }
 
 .title1,
