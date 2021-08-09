@@ -6,7 +6,7 @@ import { getWorkouts } from '../../../store/workout'
 import styles from '../../../css-modules/WorkoutContainer.module.css'
 import IndividualWorkout from "./IndividualWorkout";
 import AddWorkoutModal from "./AddWorkoutModal";
-import { getCurrentActivity, getCurrentWorkout } from '../../../store/current'
+import { clearCurrentValues } from '../../../store/current'
 
 function WorkoutContainer() {
     const dispatch = useDispatch();
@@ -17,8 +17,7 @@ function WorkoutContainer() {
     useEffect(() => {
         dispatch(getWorkouts(userId))
         return function cleanup() {
-            dispatch(getCurrentActivity(0))
-            dispatch(getCurrentWorkout(0))
+            dispatch(clearCurrentValues());
         }
     }, [dispatch, userId])
 

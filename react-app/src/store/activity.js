@@ -1,5 +1,6 @@
 const SET_ACTIVITES = 'activities/SET_ACTIVITIES';
-const DELETE_ACTIVITY = 'activities/DELETE_ACTIVITIES';
+const DELETE_ACTIVITY = 'activities/DELETE_ACTIVITY';
+const CLEAR_ACTIVITY = 'activities/CLEAR_ACTIVITY'
 
 const setActivities = (activities) => ({
     type: SET_ACTIVITES,
@@ -10,6 +11,14 @@ const deleteAct = (activity) => ({
     type: DELETE_ACTIVITY,
     payload: activity
 })
+
+const clearAct = () => ({
+    type: CLEAR_ACTIVITY
+})
+
+export const clearAllActivities = () => async (dispatch) => {
+    dispatch(clearAct())
+}
 
 export const getActivities = (workoutId) => async (dispatch) => {
     const response = await fetch(`/api/activities/all/${workoutId}`)
@@ -84,6 +93,8 @@ export default function reducer(state = initialState, action) {
             newState = { ...state }
             delete newState[action.payload]
             return newState;
+        case CLEAR_ACTIVITY:
+            return {};
         default:
             return state;
     }

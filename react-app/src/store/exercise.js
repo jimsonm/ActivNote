@@ -1,5 +1,6 @@
 const SET_EXERCISES = 'exercises/SET_EXERCISES';
-const DELETE_EXERCISE = 'exercises/DELETE_EXERCISE'
+const DELETE_EXERCISE = 'exercises/DELETE_EXERCISE';
+const CLEAR_EXERCISES = 'exercises/CLEAR_EXERCISES'
 
 const setExercises = (exercises) => ({
     type: SET_EXERCISES,
@@ -10,6 +11,14 @@ const deleteEx = (exercise) => ({
     type: DELETE_EXERCISE,
     payload: exercise
 })
+
+const clearExe = () => ({
+    type: CLEAR_EXERCISES
+})
+
+export const clearAllExercises = () => async (dispatch) => {
+    dispatch(clearExe())
+}
 
 export const getExercises = (userId) => async (dispatch) => {
     const response = await fetch(`/api/exercises/all/${userId}`)
@@ -93,6 +102,8 @@ export default function reducer(state = initialState, action) {
             newState = { ...state }
             delete newState[action.payload]
             return newState; 
+        case CLEAR_EXERCISES:
+            return {};
         default:
             return state;
     }

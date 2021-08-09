@@ -1,7 +1,8 @@
 const SET_CURRENTWORKOUT = 'current/SET_CURRENTWORKOUT';
 const SET_CURRENTEXERCISE = 'current/SET_CURRENTEXERCISE';
 const SET_CURRENTACTIVITY = 'current/SET_CURRENTACTIVITY';
-const SET_REDIRECTED = 'current/SET_REDIRECTED'
+const SET_REDIRECTED = 'current/SET_REDIRECTED';
+const CLEAR_CURRENT = 'current/CLEAR_CURRENT';
 
 const setCurrentWorkout = (workoutId) => ({
     type: SET_CURRENTWORKOUT,
@@ -22,6 +23,14 @@ const setRedirected = (payload) => ({
     type: SET_REDIRECTED,
     payload
 })
+
+const clearCurr = () => ({
+    type: CLEAR_CURRENT
+})
+
+export const clearCurrentValues = () => async (dispatch) => {
+    dispatch(clearCurr())
+}
 
 export const getCurrentWorkout = (workoutId) => async (dispatch) => {
     dispatch(setCurrentWorkout(workoutId))
@@ -61,6 +70,8 @@ export default function reducer(state = initialState, action) {
             newState['isRedirected'] = action.payload.status
             newState['redirectedExerciseId'] = action.payload.exerciseId
             return newState;
+        case CLEAR_CURRENT:
+            return {};
         default:
             return state;
     }

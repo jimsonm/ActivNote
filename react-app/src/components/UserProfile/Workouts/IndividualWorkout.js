@@ -6,7 +6,7 @@ import { GoTriangleRight, GoTriangleDown } from "react-icons/go";
 import ActivityContainer from './ActivityContainer';
 // import { getWorkoutById } from '../../../store/workout'
 import { getActivities } from "../../../store/activity";
-import { getCurrentActivity, getCurrentWorkout } from '../../../store/current'
+import { clearCurrentValues, getCurrentWorkout } from '../../../store/current'
 import { deleteWorkout, editWorkout } from '../../../store/workout'
 
 function IndividualWorkout({ workout }) {
@@ -25,8 +25,7 @@ function IndividualWorkout({ workout }) {
 
     useEffect(() => {
         return function cleanup() {
-            dispatch(getCurrentActivity(0))
-            dispatch(getCurrentWorkout(0))
+            dispatch(clearCurrentValues())
         }
     }, [dispatch])
 
