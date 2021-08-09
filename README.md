@@ -22,7 +22,7 @@
   * Heroku
 
 ## Future Features:
-- [ ] Music and Music Player
+- [ ] Music Player
 - [ ] Rendering extra workout details (total calories and total workout duration)
 - [ ] Rich-text Editor for the exercise notes
 - [ ] Search feature for the notes
