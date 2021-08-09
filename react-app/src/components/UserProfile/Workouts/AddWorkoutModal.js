@@ -89,7 +89,7 @@ function AddWorkoutModal({ setShowAddWorkoutModal }) {
                     </div>
                 )}
                 {appendActivities && showAddActivityModal && (
-                    <AddActivityModal setShowAddActivityModal={setShowAddActivityModal}/>
+                    <AddActivityModal setShowAddActivityModal={setShowAddActivityModal} setDidAdd={setDidAdd}/>
                 )}
             </div>
         </Modal>

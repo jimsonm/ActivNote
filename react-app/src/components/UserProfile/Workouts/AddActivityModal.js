@@ -6,7 +6,7 @@ import { addActivity } from '../../../store/activity'
 import { IoReturnUpBackSharp } from "react-icons/io5";
 import { getCurrentActivity, getCurrentWorkout } from '../../../store/current'
 
-function AddActivityModal({ setShowAddActivityModal }) {
+function AddActivityModal({ setShowAddActivityModal, setDidAdd }) {
     const dispatch = useDispatch();
     const exercises = useSelector(state => Object.values(state.exercise));
     const workoutId = useSelector(state => state.current.currentWorkoutId)
@@ -26,7 +26,7 @@ function AddActivityModal({ setShowAddActivityModal }) {
     const save = async (e, exerciseId) => {
         e.preventDefault();
         if (!Number(sets) || !Number(repetitions) || !Number(duration)) {
-            setErrors('Please make sure all inputs are integer values.')
+            setErrors('Please make sure all inputs are non-zero integer values.')
         } else {
             const payload = {
                 'workout_id': workoutId,
@@ -43,6 +43,7 @@ function AddActivityModal({ setShowAddActivityModal }) {
 
     const cancel = () => {
         setShowAddActivityModal(false)
+        setDidAdd(false)
     }
 
     const back = () => {

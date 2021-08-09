@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import NavBar from './Navbar';
 import styles from '../../css-modules/index.module.css'
 import { getExercises } from '../../store/exercise'
 import { useDispatch, useSelector } from 'react-redux'
+import { redirected } from '../../store/current'
 
 function User() {
+  let history = useHistory();
   const [user, setUser] = useState({});
   const { userId } = useParams();
   const dispatch = useDispatch();
@@ -31,6 +33,15 @@ function User() {
     return null;
   }
 
+  const redirect = async (id) => {
+    const payload = {
+      status: true,
+      exerciseId: id
+    }
+    dispatch(redirected(payload))
+    history.push(`/user/${userId}/exercises`)
+  }
+
   return (
     <div className={styles.container}>
       <NavBar />
@@ -48,7 +59,7 @@ function User() {
             </div>
             <div className={styles.exercisesList}>
               {exercises.map((exercise) => (
-                <div className={styles.exerciseInfoContainer}>
+                <div onClick={() => redirect(exercise.id)} className={styles.exerciseInfoContainer}>
                   <div className={styles.exerciseTitle}>
                     {exercise.exercise_name}
                   </div>
