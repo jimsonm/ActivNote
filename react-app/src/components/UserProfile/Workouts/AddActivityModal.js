@@ -1,10 +1,9 @@
 import { Modal } from '../../../context/Modal'
 import { useSelector, useDispatch } from 'react-redux'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import styles from '../../../css-modules/AddActivityModal.module.css'
 import { addActivity } from '../../../store/activity'
 import { IoReturnUpBackSharp } from "react-icons/io5";
-import { getCurrentActivity, getCurrentWorkout } from '../../../store/current'
 
 function AddActivityModal({ setShowAddActivityModal, setDidAdd }) {
     const dispatch = useDispatch();
@@ -15,13 +14,6 @@ function AddActivityModal({ setShowAddActivityModal, setDidAdd }) {
     const [repetitions, setRepetitions] = useState('');
     const [duration, setDuration] = useState('');
     const [errors, setErrors] = useState('');
-
-    useEffect(() => {
-        return function cleanup() {
-            dispatch(getCurrentActivity(0))
-            dispatch(getCurrentWorkout(0))
-        }
-    }, [dispatch])
 
     const save = async (e, exerciseId) => {
         e.preventDefault();
@@ -43,7 +35,9 @@ function AddActivityModal({ setShowAddActivityModal, setDidAdd }) {
 
     const cancel = () => {
         setShowAddActivityModal(false)
-        setDidAdd(false)
+        if (setDidAdd) {
+            setDidAdd(false)
+        }
     }
 
     const back = () => {

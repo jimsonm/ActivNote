@@ -64,7 +64,7 @@ const SignUpForm = () => {
   else return (
     <div className={styles.SignUpFormContainer}>
       <div className={styles.logoContainer}>
-        <img src={logo} className={styles.logo} />
+        <img src={logo} className={styles.logo} alt=''/>
       </div>
       <div className={styles.CenterText}>
         ActivNote

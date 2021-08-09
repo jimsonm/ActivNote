@@ -19,7 +19,7 @@ const SplashNavBar = () => {
   return (
     <nav className={styles.navBarContainer}>
       <div className={styles.navLeft}>
-        <img src={logo} className={styles.logo} />
+        <img src={logo} className={styles.logo} alt=''/>
         <div className={styles.title}>
           ActivNote
         </div>

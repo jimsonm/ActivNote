@@ -85,10 +85,10 @@ function ActivityContainer({setShowIcons}) {
     return (
         <div>
             <div className={styles.iconsDiv}>
-                <FaPlusSquare onClick={showAddModal} className={styles.icon} />
                 <div className={styles.title}>
                     Exercises
                 </div>
+                <FaPlusSquare onClick={showAddModal} className={styles.icon} />
             </div>
             {showAddActivityModal && (
                 <AddActivityModal setShowAddActivityModal={setShowAddActivityModal} />

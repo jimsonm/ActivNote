@@ -5,6 +5,7 @@ import { Modal } from '../../context/Modal';
 import LoginForm from '../SplashNavBar/LoginFormModal/LoginForm';
 import { useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import homePageImage from '../assets/homepage.jpeg'
 
 function SplashPage() {
     const [showModal, setShowModal] = useState(false);
@@ -35,8 +36,9 @@ function SplashPage() {
                 )}
             </div>
             <img
-                src='https://media.istockphoto.com/photos/treadmill-in-fitness-room-background-with-color-tone-and-light-flare-picture-id927519746?k=6&m=927519746&s=170667a&w=0&h=TItiGl3Br80PuVivMqIIpcptcz6ZJT_hfYvE_PYbq04='
+                src={homePageImage}
                 className={styles.homeImage}
+                alt=''
             />
         </div>
     )
