@@ -58,6 +58,11 @@ function User() {
               Exercises
             </div>
             <div className={styles.exercisesList}>
+              {exercises.length === 0 && (
+                <div className={styles.noExercises}>
+                  You currently have no exercises. Try creating one to start your fitness journey!
+                </div>
+              )}
               {exercises.map((exercise) => (
                 <div onClick={() => redirect(exercise.id)} className={styles.exerciseInfoContainer} key={exercise.id}>
                   <div className={styles.exerciseTitle}>

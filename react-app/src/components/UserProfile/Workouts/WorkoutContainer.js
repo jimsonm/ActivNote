@@ -38,6 +38,11 @@ function WorkoutContainer() {
                         )}
                     </div>
                     <div className={styles.individualWorkoutContainer}>
+                        {workouts.length === 0 && (
+                            <div className={styles.noWorkouts}>
+                                You currently have no workouts. Try creating one to start your fitness journey!
+                            </div>
+                        )}
                         {workouts.map((workout) => (
                             <IndividualWorkout workout={workout} key={workout.id} />
                         ))}

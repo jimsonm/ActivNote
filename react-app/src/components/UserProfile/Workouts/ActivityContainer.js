@@ -90,6 +90,11 @@ function ActivityContainer({setShowIcons}) {
                 </div>
                 <FaPlusSquare onClick={showAddModal} className={styles.icon} />
             </div>
+            {activities.length === 0 && (
+                <div className={styles.indivActivity}>
+                    It seems like you don't currently have exercises for this workout. Try adding an exercise to get started!
+                </div>
+            )}
             {showAddActivityModal && (
                 <AddActivityModal setShowAddActivityModal={setShowAddActivityModal} />
             )}
