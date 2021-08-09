@@ -34,6 +34,10 @@ function SplashPage() {
                     </Modal>
                 )}
             </div>
+            <img
+                src='https://media.istockphoto.com/photos/treadmill-in-fitness-room-background-with-color-tone-and-light-flare-picture-id927519746?k=6&m=927519746&s=170667a&w=0&h=TItiGl3Br80PuVivMqIIpcptcz6ZJT_hfYvE_PYbq04='
+                className={styles.homeImage}
+            />
         </div>
     )
 }
