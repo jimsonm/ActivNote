@@ -59,7 +59,7 @@ function User() {
             </div>
             <div className={styles.exercisesList}>
               {exercises.map((exercise) => (
-                <div onClick={() => redirect(exercise.id)} className={styles.exerciseInfoContainer}>
+                <div onClick={() => redirect(exercise.id)} className={styles.exerciseInfoContainer} key={exercise.id}>
                   <div className={styles.exerciseTitle}>
                     {exercise.exercise_name}
                   </div>
