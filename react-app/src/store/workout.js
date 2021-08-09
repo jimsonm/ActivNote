@@ -1,5 +1,6 @@
 const SET_WORKOUTS = 'workouts/SET_WORKOUTS';
 const DELETE_WORKOUT = 'workouts/DELETE_WORKOUTS';
+const CLEAR_WORKOUTS = 'workouts/CLEAR_WORKOUTS';
 
 const setWorkouts = (workouts) => ({
     type: SET_WORKOUTS,
@@ -10,6 +11,14 @@ const deleteWork = (workout) => ({
     type: DELETE_WORKOUT,
     payload: workout
 })
+
+const clearWork = () => ({
+    type: CLEAR_WORKOUTS
+})
+
+export const clearAllWorkouts = () => async (dispatch) => {
+    dispatch(clearWork())
+}
 
 export const getWorkouts = (userId) => async (dispatch) => {
     const response = await fetch(`/api/workouts/all/${userId}`)
@@ -88,6 +97,8 @@ export default function reducer(state = initialState, action) {
             newState = { ...state }
             delete newState[action.payload]
             return newState;
+        case CLEAR_WORKOUTS:
+            return {};
         default:
             return state;
     }
