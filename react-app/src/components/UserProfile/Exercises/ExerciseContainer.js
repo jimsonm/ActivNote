@@ -26,7 +26,7 @@ function ExerciseContainer() {
         await setCurrentExercise(exercise)
         await setSelected(true)
         await setIsForm(false)
-        if(isRedirected) {
+        if (isRedirected) {
             const payload = {
                 status: false,
                 exerciseId: redirectedExercise
@@ -52,11 +52,11 @@ function ExerciseContainer() {
                             {exercises.map((exercise) => (
                                 <div onClick={() => displayDetails(exercise.id)} key={exercise.id} className={styles.exerciseNames}>
                                     <div className={styles.exerciseTitle}>
-                                    {exercise.exercise_name}
+                                        {exercise.exercise_name}
                                     </div>
                                     <br />
                                     <div className={styles.exerciseNotes}>
-                                    {exercise.notes}
+                                        {exercise.notes}
                                     </div>
                                 </div>
                             ))}
@@ -64,7 +64,12 @@ function ExerciseContainer() {
                     </div>
                 </div>
                 <div className={styles.ExerciseDetails}>
-                    {!selected && (
+                    {exercises.length === 0 && (
+                        <div className={styles.pleaseSelect}>
+                            You currently have no exercises. Try creating one to start your fitness journey!
+                        </div>
+                    )}
+                    {!selected && exercises.length !== 0 && (
                         <div className={styles.pleaseSelect}>
                             Please select an exercise to view its details.
                         </div>

@@ -112,3 +112,7 @@
 .button:hover {
   background-color: #008f26;
 }
+
+.noWorkouts {
+  margin: 20px;
+}
