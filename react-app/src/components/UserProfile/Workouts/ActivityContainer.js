@@ -53,7 +53,7 @@ function ActivityContainer({setShowIcons}) {
 
     const updateActivity = async (e, activity) => {
         if (!Number(sets) || !Number(reps) || !Number(duration)) {
-            setErrors('Please make sure all inputs are integer values.')
+            setErrors('Please make sure all inputs are non-zero integer values.')
         } else {
             e.stopPropagation();
             e.preventDefault();

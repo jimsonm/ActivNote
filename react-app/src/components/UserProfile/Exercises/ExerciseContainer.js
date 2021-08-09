@@ -5,12 +5,15 @@ import { getExercises, getExerciseById } from '../../../store/exercise';
 import ExerciseDetails from './ExerciseDetails';
 import styles from '../../../css-modules/ExerciseContainer.module.css';
 import NavBar from '../Navbar';
+import { redirected } from '../../../store/current'
 
 function ExerciseContainer() {
     const dispatch = useDispatch();
     const { userId } = useParams();
     const [currentExercise, setCurrentExercise] = useState(null);
     const exercises = useSelector(state => Object.values(state.exercise))
+    const isRedirected = useSelector(state => state.current.isRedirected)
+    const redirectedExercise = useSelector(state => state.current.redirectedExerciseId)
     const [selected, setSelected] = useState(false)
     const [isForm, setIsForm] = useState(false)
 
@@ -23,6 +26,17 @@ function ExerciseContainer() {
         await setCurrentExercise(exercise)
         await setSelected(true)
         await setIsForm(false)
+        if(isRedirected) {
+            const payload = {
+                status: false,
+                exerciseId: redirectedExercise
+            }
+            dispatch(redirected(payload))
+        }
+    }
+
+    if (isRedirected) {
+        displayDetails(redirectedExercise)
     }
 
     return (
