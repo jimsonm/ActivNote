@@ -9,7 +9,7 @@ import { GoChevronRight, GoChevronDown } from "react-icons/go";
 import { FaRegEdit, FaSave, FaTrashAlt, FaPlusSquare } from "react-icons/fa";
 import AddActivityModal from './AddActivityModal'
 
-function ActivityContainer({setShowIcons}) {
+function ActivityContainer({ setShowIcons, totalCalories, totalDuration }) {
     const dispatch = useDispatch();
     const { userId } = useParams();
     const activities = useSelector(state => Object.values(state.activity))
@@ -84,11 +84,22 @@ function ActivityContainer({setShowIcons}) {
 
     return (
         <div>
-            <div className={styles.iconsDiv}>
-                <div className={styles.title}>
-                    Exercises
+            <div>
+                <div>
+                    <div className={styles.title}>
+                        Estimated Total Calories Burned = {totalCalories} calories
+                    </div>
+                    <div className={styles.title}>
+                        Estimated Total Duration = {totalDuration} minutes
+                    </div>
                 </div>
-                <FaPlusSquare onClick={showAddModal} className={styles.icon} />
+                <div className={styles.iconsDiv}>
+                    <div className={styles.title}>
+                        Exercises
+                    </div>
+                    <FaPlusSquare onClick={showAddModal} className={styles.icon} />
+                </div>
+
             </div>
             {activities.length === 0 && (
                 <div className={styles.indivActivity}>
@@ -112,26 +123,26 @@ function ActivityContainer({setShowIcons}) {
                                 <GoChevronRight onClick={(e) => expandDetails(e, activity)} className={styles.icon} />
                             )}
                             <div className={styles.iconSpacing}>
-                            <div>
-                                {exercises[activity.exercise_id]?.exercise_name}
-                            </div>
-                            <div>
-                            {!isInput && currActivityId === activity.id && details && (
-                                <>
-                                    <FaRegEdit onClick={(e) => edit(e, activity)} className={styles.iconR} />
-                                </>
-                            )}
-                            {isInput && currActivityId === activity.id && details && (
-                                <>
-                                    <FaSave onClick={(e) => updateActivity(e, activity)} className={styles.iconR} />
-                                </>
-                            )}
-                            {!isInput && currActivityId === activity.id && details && (
-                                <>
-                                    <FaTrashAlt onClick={(e) => removeActivity(e, activity)} className={styles.iconR} />
-                                </>
-                            )}
-                            </div>
+                                <div>
+                                    {exercises[activity.exercise_id]?.exercise_name}
+                                </div>
+                                <div>
+                                    {!isInput && currActivityId === activity.id && details && (
+                                        <>
+                                            <FaRegEdit onClick={(e) => edit(e, activity)} className={styles.iconR} />
+                                        </>
+                                    )}
+                                    {isInput && currActivityId === activity.id && details && (
+                                        <>
+                                            <FaSave onClick={(e) => updateActivity(e, activity)} className={styles.iconR} />
+                                        </>
+                                    )}
+                                    {!isInput && currActivityId === activity.id && details && (
+                                        <>
+                                            <FaTrashAlt onClick={(e) => removeActivity(e, activity)} className={styles.iconR} />
+                                        </>
+                                    )}
+                                </div>
                             </div>
                         </div>
                         {currActivityId === activity.id && details && (
@@ -145,17 +156,17 @@ function ActivityContainer({setShowIcons}) {
                                     <>
                                         <div className={styles.activityInfo}>
                                             {`Sets:`}
-                                            <br/>
+                                            <br />
                                             {activity.sets}
                                         </div>
                                         <div className={styles.activityInfo}>
                                             {`Reps:`}
-                                            <br/>
+                                            <br />
                                             {activity.repetitions}
                                         </div>
                                         <div className={styles.activityInfo}>
                                             {`Duration (in minutes):`}
-                                            <br/>
+                                            <br />
                                             {activity.duration}
                                         </div>
                                     </>
@@ -165,7 +176,7 @@ function ActivityContainer({setShowIcons}) {
                                         <form>
                                             <div className={styles.activityInfo}>
                                                 {`Sets: `}
-                                                <br/>
+                                                <br />
                                                 <input
                                                     type='text'
                                                     name='sets'

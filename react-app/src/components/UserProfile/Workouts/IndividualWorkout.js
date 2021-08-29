@@ -6,28 +6,56 @@ import { GoTriangleRight, GoTriangleDown } from "react-icons/go";
 import ActivityContainer from './ActivityContainer';
 // import { getWorkoutById } from '../../../store/workout'
 import { getActivities } from "../../../store/activity";
-import { clearCurrentValues, getCurrentWorkout } from '../../../store/current'
-import { deleteWorkout, editWorkout } from '../../../store/workout'
+import { clearCurrentValues, getCurrentWorkout } from '../../../store/current';
+import { deleteWorkout, editWorkout } from '../../../store/workout';
+import { getExercises } from '../../../store/exercise';
+import { useParams } from 'react-router-dom';
 
 function IndividualWorkout({ workout }) {
     const dispatch = useDispatch()
+    const { userId } = useParams();
     const current = useSelector(state => state.current)
     const currWorkoutId = useSelector(state => state.current.currentWorkoutId)
+    const activities = useSelector(state => Object.values(state.activity))
+    const exercises = useSelector(state => (state.exercise))
     const [showActivities, setShowActivities] = useState(false)
     const [showIcons, setShowIcons] = useState(false)
     const [workoutForm, setWorkoutForm] = useState(false)
     const [workout_name, setWorkout_Name] = useState(workout.workout_name)
+    const [totalCalories, setTotalCalories] = useState(0);
+    const [totalDuration, setTotalDuration] = useState(0);
 
+    useEffect(() => {
+        let totalCal = 0;
+        let totalDur = 0;
+        if (exercises !== {} && activities !== {} && current !== {}) {
+            activities.forEach(activity => {
+                let duration = activity.duration;
+                let activityCal = (duration * exercises[activity.exercise_id]['calories_burned']);
+                totalCal += activityCal
+                totalDur += activity.duration
+                setTotalCalories(totalCal)
+                setTotalDuration(totalDur)
+            })
+            console.log(totalCalories);
+            console.log(totalDuration);
+        } else if (exercises === {} || activities === {} || current === {}) {
+            console.log('ok');
+            setTotalCalories(0)
+            setTotalDuration(0)
+        }
+    }, [showActivities])
     // if(currWorkoutId === workout.id) {
     //     console.log('rerender', showIcons)
     //     console.log('rerenver', currWorkoutId, workout.id)
     // }
 
     useEffect(() => {
+        dispatch(getExercises(userId))
         return function cleanup() {
             dispatch(clearCurrentValues())
         }
-    }, [dispatch])
+    }, [dispatch, userId])
 
     const displayActivities = async () => {
         // const selectedWorkout = await dispatch(getWorkoutById(id))
@@ -44,6 +72,7 @@ function IndividualWorkout({ workout }) {
         } else if (showIcons && currWorkoutId === workout.id && !showActivities) {
             setShowIcons(false)
         }
+        // console.log(activities);
         // else if (showIcons && currWorkoutId === workout.id && showActivities) {
         //     setShowIcons(false)
         // }
@@ -117,7 +146,7 @@ function IndividualWorkout({ workout }) {
                     </div>
                 </div>
                 {current['currentWorkoutId'] === workout.id && showActivities && (
-                    <ActivityContainer setShowIcons={setShowIcons} />
+                    <ActivityContainer setShowIcons={setShowIcons} totalCalories={totalCalories} totalDuration={totalDuration} />
                 )}
             </div>
         </>
