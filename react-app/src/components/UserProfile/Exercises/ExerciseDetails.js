@@ -3,6 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import styles from '../../../css-modules/SingleExercise.module.css';
 import { useParams } from 'react-router-dom';
 import { editExercise, deleteExercise } from '../../../store/exercise';
+import React, { Component } from 'react';
+import { Editor } from 'react-draft-wysiwyg';
+import { EditorState, convertFromRaw, convertToRaw } from 'draft-js';
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
 function ExerciseDetails({ exercise, setCurrentExercise, setSelected, isForm, setIsForm }) {
     const currExId = exercise.id
@@ -14,9 +18,20 @@ function ExerciseDetails({ exercise, setCurrentExercise, setSelected, isForm, se
     const [calories, setCalories] = useState(currentExercise.calories_burned)
     const [notes, setNotes] = useState(currentExercise.notes)
     const [errors, setErrors] = useState([]);
+    const [editorState, setEditorState] = useState(() =>
+        EditorState.createEmpty()
+    )
+
+    const updateRichText = async (state) => {
+        await setEditorState(state);
+        const data = convertToRaw(editorState.getCurrentContent());
+        console.log(data);
+    };
 
     const updateExercise = async (e) => {
         e.preventDefault();
+        console.log(convertToRaw(editorState.getCurrentContent()));
+        const data = convertToRaw(editorState.getCurrentContent());
         if (!Number(calories) && calories !== 0) {
             setErrors(["Please input an integer for the calories burned/min."])
         } else {
@@ -25,7 +40,7 @@ function ExerciseDetails({ exercise, setCurrentExercise, setSelected, isForm, se
                 exerciseId,
                 name,
                 calories,
-                notes
+                notes: JSON.stringify(data)
             }
             dispatch(editExercise(payload))
             setIsForm(false)
@@ -92,7 +107,7 @@ function ExerciseDetails({ exercise, setCurrentExercise, setSelected, isForm, se
                             Notes
                         </div>
                         <div className={styles.NotesInfo}>
-                            {currentExercise.notes}
+                            {JSON.parse(currentExercise.notes).blocks[0].text}
                         </div>
                     </div>
                 </div>
@@ -139,13 +154,20 @@ function ExerciseDetails({ exercise, setCurrentExercise, setSelected, isForm, se
                         <div className={styles.NotesTitle}>
                             Notes
                         </div>
-                        <textarea
+                        {/* <textarea
                             type='text'
                             name='notes'
                             value={notes}
                             placeholder='Notes about your exercise'
                             onChange={(e) => setNotes(e.target.value)}
                             className={styles.input3}
+                        /> */}
+                        <Editor
+                            editorState={editorState}
+                            toolbarClassName="toolbarClassName"
+                            wrapperClassName="wrapperClassName"
+                            editorClassName="editorClassName"
+                            onEditorStateChange={updateRichText}
                         />
                     </div>
                 </form>
