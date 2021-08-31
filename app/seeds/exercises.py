@@ -4,19 +4,19 @@ def seed_exercises():
     one = Exercise(
         exercise_name='Push-ups',
         calories_burned=7,
-        notes='I want to work on explosive push-ups.',
+        notes='{"blocks":[{"key":"t76n","text":"Test!","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}}',
         user_id=1
     )
     two = Exercise(
         exercise_name='Sit-ups',
         calories_burned=3,
-        notes='Can do up to 50 in a set',
+        notes='{"blocks":[{"key":"t76n","text":"Test!!","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}}',
         user_id=1
     )
     three = Exercise(
         exercise_name='One Mile Run',
         calories_burned=10,
-        notes='Goal is a 6 minute mile.',
+        notes='{"blocks":[{"key":"t76n","text":"Test!!!","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}}',
         user_id=1
     )
 
