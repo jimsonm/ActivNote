@@ -7,8 +7,11 @@ import React, { Component } from 'react';
 import { Editor } from 'react-draft-wysiwyg';
 import { EditorState, convertFromRaw, convertToRaw } from 'draft-js';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
+import draftToHtml from 'draftjs-to-html';
+import parse from 'html-react-parser';
+import { FaBlackberry } from 'react-icons/fa';
 
-function ExerciseDetails({ exercise, setCurrentExercise, setSelected, isForm, setIsForm }) {
+function ExerciseDetails({ exercise, setCurrentExercise, setSelected, isForm, setIsForm, editorState, setEditorState }) {
     const currExId = exercise.id
     const currentExercise = useSelector(state => state.exercise[currExId])
     const { userId } = useParams();
@@ -16,11 +19,13 @@ function ExerciseDetails({ exercise, setCurrentExercise, setSelected, isForm, se
     const exerciseId = currentExercise.id
     const [name, setName] = useState(currentExercise.exercise_name)
     const [calories, setCalories] = useState(currentExercise.calories_burned)
-    const [notes, setNotes] = useState(currentExercise.notes)
+    // const [notes, setNotes] = useState(currentExercise.notes)
     const [errors, setErrors] = useState([]);
-    const [editorState, setEditorState] = useState(() =>
-        EditorState.createEmpty()
-    )
+    // const [editorState, setEditorState] = useState(() =>
+    //     EditorState.createWithContent(convertFromRaw(JSON.parse(currentExercise.notes)))
+    // );
+    console.log(editorState)
+    const zzzz = '<p>kdosakdakfsdfsf<span style="font-size: 72px;">fdfd</span></p>'
 
     const updateRichText = async (state) => {
         await setEditorState(state);
@@ -30,8 +35,10 @@ function ExerciseDetails({ exercise, setCurrentExercise, setSelected, isForm, se
 
     const updateExercise = async (e) => {
         e.preventDefault();
-        console.log(convertToRaw(editorState.getCurrentContent()));
+        // console.log(convertToRaw(editorState.getCurrentContent()));
         const data = convertToRaw(editorState.getCurrentContent());
+        const data2 = draftToHtml(data);
+        console.log(data2);
         if (!Number(calories) && calories !== 0) {
             setErrors(["Please input an integer for the calories burned/min."])
         } else {
@@ -53,7 +60,7 @@ function ExerciseDetails({ exercise, setCurrentExercise, setSelected, isForm, se
         setIsForm(false)
         setName(currentExercise.exercise_name)
         setCalories(currentExercise.calories_burned)
-        setNotes(currentExercise.notes)
+        setEditorState(EditorState.createWithContent(convertFromRaw(JSON.parse(currentExercise.notes))));
         setErrors([])
     }
 
@@ -69,11 +76,12 @@ function ExerciseDetails({ exercise, setCurrentExercise, setSelected, isForm, se
     }
 
     const editForm = async (e) => {
+        // console.log('czxcz', editorState)
         e.preventDefault();
         setIsForm(true)
         setName(currentExercise.exercise_name)
         setCalories(currentExercise.calories_burned)
-        setNotes(currentExercise.notes)
+        setEditorState(EditorState.createWithContent(convertFromRaw(JSON.parse(currentExercise.notes))));
     }
 
     return (
@@ -107,7 +115,21 @@ function ExerciseDetails({ exercise, setCurrentExercise, setSelected, isForm, se
                             Notes
                         </div>
                         <div className={styles.NotesInfo}>
-                            {JSON.parse(currentExercise.notes).blocks[0].text}
+                            {/* {parse(zzzz)} */}
+                            {parse(draftToHtml(JSON.parse(currentExercise.notes)))}
+                            {console.log(currentExercise.notes)}
+                            {/* <Editor
+                                editorState={editorState}
+                                // toolbarClassName="toolbarClassName"
+                                // wrapperClassName="wrapperClassName"
+                                // editorClassName="editorClassName"
+                                // onEditorStateChange={updateRichText}
+                                readOnly={true}
+                                toolbarHidden={true}
+                                className={styles.NotesInfo}
+                            /> */}
+                            {/* {JSON.parse(currentExercise.notes).blocks[0].text} */}
+                            {/* {draftToHtml(convertToRaw(editorState.getCurrentContent()))} */}
                         </div>
                     </div>
                 </div>
@@ -162,13 +184,15 @@ function ExerciseDetails({ exercise, setCurrentExercise, setSelected, isForm, se
                             onChange={(e) => setNotes(e.target.value)}
                             className={styles.input3}
                         /> */}
-                        <Editor
-                            editorState={editorState}
-                            toolbarClassName="toolbarClassName"
-                            wrapperClassName="wrapperClassName"
-                            editorClassName="editorClassName"
-                            onEditorStateChange={updateRichText}
-                        />
+                        <span>
+                            <Editor
+                                editorState={editorState}
+                                toolbarClassName="toolbarClassName"
+                                wrapperClassName="wrapperClassName"
+                                editorClassName="editorClassName"
+                                onEditorStateChange={updateRichText}
+                            />
+                        </span>
                     </div>
                 </form>
             )}

@@ -5,7 +5,11 @@ import { getExercises, getExerciseById } from '../../../store/exercise';
 import ExerciseDetails from './ExerciseDetails';
 import styles from '../../../css-modules/ExerciseContainer.module.css';
 import NavBar from '../Navbar';
-import { redirected } from '../../../store/current'
+import { redirected } from '../../../store/current';
+import { Editor } from 'react-draft-wysiwyg';
+import { EditorState, convertFromRaw, convertToRaw } from 'draft-js';
+import draftToHtml from 'draftjs-to-html';
+import parse from 'html-react-parser';
 
 function ExerciseContainer() {
     const dispatch = useDispatch();
@@ -16,16 +20,23 @@ function ExerciseContainer() {
     const redirectedExercise = useSelector(state => state.current.redirectedExerciseId)
     const [selected, setSelected] = useState(false)
     const [isForm, setIsForm] = useState(false)
+    const [editorState, setEditorState] = useState();
 
     useEffect(() => {
         dispatch(getExercises(userId))
     }, [dispatch, userId])
 
+    useEffect(() => {
+        if (currentExercise) {
+            setEditorState(EditorState.createWithContent(convertFromRaw(JSON.parse(currentExercise.notes))));
+        }
+    }, [currentExercise])
+
     const displayDetails = async (id) => {
         const exercise = await dispatch(getExerciseById(id))
-        await setCurrentExercise(exercise)
-        await setSelected(true)
-        await setIsForm(false)
+        setCurrentExercise(exercise)
+        setSelected(true)
+        setIsForm(false)
         if (isRedirected) {
             const payload = {
                 status: false,
@@ -38,6 +49,8 @@ function ExerciseContainer() {
     if (isRedirected) {
         displayDetails(redirectedExercise)
     }
+
+    const zzzz = '<p>kdosakdakfsdfsf<span style="font-size: 72px;">fdfd</span></p>'
 
     return (
         <div className={styles.ExerciseContainer}>
@@ -53,10 +66,35 @@ function ExerciseContainer() {
                                 <div onClick={() => displayDetails(exercise.id)} key={exercise.id} className={styles.exerciseNames}>
                                     <div className={styles.exerciseTitle}>
                                         {exercise.exercise_name}
+                                        {/* {console.log(exercise)} */}
                                     </div>
-                                    <br />
+                                    {/* <br /> */}
                                     <div className={styles.exerciseNotes}>
-                                        {exercise.notes}
+                                        {parse(draftToHtml(JSON.parse(exercise.notes)))}
+                                        {/* {exercise.notes !== null && parse(draftToHtml(JSON.parse(exercise.notes))) || ""} */}
+                                        {/* {console.log(exercise.notes)} */}
+                                        {/* {parse(zzzz)} */}
+                                        {/* {parse(exercise.notes)} */}
+                                        {/* {console.log(typeof(exercise.notes))} */}
+                                        {/* {typeof exercise.notes === 'obj' ? parse(draftToHtml(JSON.parse(exercise.notes))) : parse(exercise.notes)} */}
+                                        {/* {typeof exercise.notes === 'string' ? parse(draftToHtml(JSON.parse(currentExercise.notes))) : parse(draftToHtml(JSON.parse(exercise.notes)))} */}
+
+
+                                        {/* <Editor
+                                            // editorState={() =>
+                                            //     EditorState.createEmpty()
+                                            // }
+                                            // toolbarClassName="toolbarClassName"
+                                            // wrapperClassName="wrapperClassName"
+                                            // editorClassName="editorClassName"
+                                            // onEditorStateChange={updateRichText}
+                                            readOnly={true}
+                                            toolbarHidden={true}
+                                            className={styles.NotesInfo}
+                                        /> */}
+                                        {/* {exercise.notes[0] === '{' && JSON.parse(exercise.notes).blocks[0].text} */}
+                                        {/* {draftToHtml(convertToRaw(editorState.getCurrentContent()))} */}
+                                        {/* {exercise && draftToHtml(convertFromRaw(editorState.exercise.notes))} */}
                                     </div>
                                 </div>
                             ))}
@@ -75,7 +113,7 @@ function ExerciseContainer() {
                         </div>
                     )}
                     {currentExercise && selected && (
-                        <ExerciseDetails exercise={currentExercise} setCurrentExercise={setCurrentExercise} setSelected={setSelected} isForm={isForm} setIsForm={setIsForm} />
+                        <ExerciseDetails exercise={currentExercise} setCurrentExercise={setCurrentExercise} setSelected={setSelected} isForm={isForm} setIsForm={setIsForm} editorState={editorState} setEditorState={setEditorState} />
                     )}
                 </div>
             </div>
