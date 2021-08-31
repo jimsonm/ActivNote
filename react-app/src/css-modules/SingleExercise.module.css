@@ -59,6 +59,14 @@
   color: white;
 }
 
+.SingleExerciseContainer form div span {
+  color: black;
+}
+
+.SingleExerciseContainer form div span div div div div div div div div span{
+  color: white;
+}
+
 .button {
   margin: 0px 15px;
   background-color: #00a82d;
