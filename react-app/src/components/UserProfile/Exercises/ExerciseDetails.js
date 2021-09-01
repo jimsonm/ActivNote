@@ -76,7 +76,6 @@ function ExerciseDetails({ exercise, setCurrentExercise, setSelected, isForm, se
     }
 
     const editForm = async (e) => {
-        // console.log('czxcz', editorState)
         e.preventDefault();
         setIsForm(true)
         setName(currentExercise.exercise_name)
