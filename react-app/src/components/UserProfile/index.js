@@ -5,6 +5,8 @@ import styles from '../../css-modules/index.module.css'
 import { getExercises } from '../../store/exercise'
 import { useDispatch, useSelector } from 'react-redux'
 import { redirected } from '../../store/current'
+import draftToHtml from 'draftjs-to-html';
+import parse from 'html-react-parser';
 
 function User() {
   let history = useHistory();
@@ -69,7 +71,7 @@ function User() {
                     {exercise.exercise_name}
                   </div>
                   <div className={styles.exerciseNotes}>
-                    {exercise.notes}
+                    {parse(draftToHtml(JSON.parse(exercise.notes)))}
                   </div>
                 </div>
               ))}
