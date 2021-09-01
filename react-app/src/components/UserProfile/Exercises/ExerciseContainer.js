@@ -6,7 +6,7 @@ import ExerciseDetails from './ExerciseDetails';
 import styles from '../../../css-modules/ExerciseContainer.module.css';
 import NavBar from '../Navbar';
 import { redirected } from '../../../store/current';
-import { Editor } from 'react-draft-wysiwyg';
+// import { Editor } from 'react-draft-wysiwyg';
 import { EditorState, convertFromRaw, convertToRaw } from 'draft-js';
 import draftToHtml from 'draftjs-to-html';
 import parse from 'html-react-parser';
