@@ -94,7 +94,6 @@ function ExerciseContainer() {
                                         /> */}
                                         {/* {exercise.notes[0] === '{' && JSON.parse(exercise.notes).blocks[0].text} */}
                                         {/* {draftToHtml(convertToRaw(editorState.getCurrentContent()))} */}
-                                        {/* {exercise && draftToHtml(convertFromRaw(editorState.exercise.notes))} */}
                                     </div>
                                 </div>
                             ))}
