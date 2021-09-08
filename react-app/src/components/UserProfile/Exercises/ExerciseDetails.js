@@ -24,8 +24,6 @@ function ExerciseDetails({ exercise, setCurrentExercise, setSelected, isForm, se
     // const [editorState, setEditorState] = useState(() =>
     //     EditorState.createWithContent(convertFromRaw(JSON.parse(currentExercise.notes)))
     // );
-    console.log(editorState)
-    const zzzz = '<p>kdosakdakfsdfsf<span style="font-size: 72px;">fdfd</span></p>'
 
     const updateRichText = async (state) => {
         await setEditorState(state);

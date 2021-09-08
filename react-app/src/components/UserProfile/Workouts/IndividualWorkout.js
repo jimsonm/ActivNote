@@ -37,10 +37,10 @@ function IndividualWorkout({ workout }) {
                 setTotalCalories(totalCal)
                 setTotalDuration(totalDur)
             })
-            console.log(totalCalories);
-            console.log(totalDuration);
+            // console.log(totalCalories);
+            // console.log(totalDuration);
         } else if (exercises === {} || activities === {} || current === {}) {
-            console.log('ok');
+            // console.log('ok');
             setTotalCalories(0)
             setTotalDuration(0)
         }
