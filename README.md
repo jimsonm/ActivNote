@@ -9,7 +9,7 @@
   * Database Schema - https://github.com/jimsonm/ActivNote/wiki/Database-Schema
   * User Stories - https://github.com/jimsonm/ActivNote/wiki/User-Stories
   
-  ## Technologies Used
+## Technologies Used
   * Docker
   * PostgreSQL
   * Python
@@ -20,6 +20,34 @@
   * HTML
   * CSS
   * Heroku
+
+## Home Page
+<br>
+<p align="center">
+<img src="./src/components/assets/HomePage.png" width="500" height="400"></img>
+</p>
+<br>
+
+## Creating an Exercise
+<br>
+<p align="center">
+<img src="./src/components/assets/NewExercise.png" width="200" height="250"></img>
+</p>
+<br>
+
+## Editting an Exercise
+<br>
+<p align="center">
+<img src="./src/components/assets/EditExercise.png" width="500" height="400"></img>
+</p>
+<br>
+
+## Viewing your Workouts
+<br>
+<p align="center">
+<img src="./src/components/assets/Workouts.png" width="500" height="400"></img>
+</p>
+<br>
 
 ## Future Features:
 - [ ] Music Player
