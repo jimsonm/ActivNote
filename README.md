@@ -24,28 +24,28 @@
 ## Home Page
 <br>
 <p align="center">
-<img src="./src/components/assets/HomePage.png" width="500" height="400"></img>
+<img src="./react-app/src/components/assets/HomePage.png" width="75%" height="75%"></img>
 </p>
 <br>
 
 ## Creating an Exercise
 <br>
 <p align="center">
-<img src="./src/components/assets/NewExercise.png" width="200" height="250"></img>
+<img src="./react-app/src/components/assets/NewExercise.png" width="30%" height="30%"></img>
 </p>
 <br>
 
 ## Editting an Exercise
 <br>
 <p align="center">
-<img src="./src/components/assets/EditExercise.png" width="500" height="400"></img>
+<img src="./react-app/src/components/assets/EditExercise.png" width="75%" height="75%"></img>
 </p>
 <br>
 
 ## Viewing your Workouts
 <br>
 <p align="center">
-<img src="./src/components/assets/Workouts.png" width="500" height="400"></img>
+<img src="./react-app/src/components/assets/Workouts.png" width="75%" height="75%"></img>
 </p>
 <br>
 
