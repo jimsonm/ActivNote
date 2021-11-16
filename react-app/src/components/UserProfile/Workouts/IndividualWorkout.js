@@ -28,7 +28,7 @@ function IndividualWorkout({ workout }) {
     useEffect(() => {
         let totalCal = 0;
         let totalDur = 0;
-        if (exercises !== {} && activities !== {} && current !== {}) {
+        if (exercises !== {} && activities.length > 0 && current !== {}) {
             activities.forEach(activity => {
                 let duration = activity.duration;
                 let activityCal = (duration * exercises[activity.exercise_id]['calories_burned']);
@@ -37,18 +37,11 @@ function IndividualWorkout({ workout }) {
                 setTotalCalories(totalCal)
                 setTotalDuration(totalDur)
             })
-            // console.log(totalCalories);
-            // console.log(totalDuration);
-        } else if (exercises === {} || activities === {} || current === {}) {
-            // console.log('ok');
+        } else if (exercises === {} || activities.length === 0 || current === {}) {
             setTotalCalories(0)
             setTotalDuration(0)
         }
-    }, [showActivities])
-    // if(currWorkoutId === workout.id) {
-    //     console.log('rerender', showIcons)
-    //     console.log('rerenver', currWorkoutId, workout.id)
-    // }
+    }, [current])
 
     useEffect(() => {
         dispatch(getExercises(userId))
@@ -58,7 +51,6 @@ function IndividualWorkout({ workout }) {
     }, [dispatch, userId])
 
     const displayActivities = async () => {
-        // const selectedWorkout = await dispatch(getWorkoutById(id))
         await dispatch(getActivities(workout.id))
         await dispatch(getCurrentWorkout(workout.id))
         if (!showActivities) {
