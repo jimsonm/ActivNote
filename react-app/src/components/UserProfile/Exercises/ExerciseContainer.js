@@ -6,7 +6,6 @@ import ExerciseDetails from './ExerciseDetails';
 import styles from '../../../css-modules/ExerciseContainer.module.css';
 import NavBar from '../Navbar';
 import { redirected } from '../../../store/current';
-// import { Editor } from 'react-draft-wysiwyg';
 import { EditorState, convertFromRaw, convertToRaw } from 'draft-js';
 import draftToHtml from 'draftjs-to-html';
 import parse from 'html-react-parser';
@@ -64,9 +63,7 @@ function ExerciseContainer() {
                                 <div onClick={() => displayDetails(exercise.id)} key={exercise.id} className={styles.exerciseNames}>
                                     <div className={styles.exerciseTitle}>
                                         {exercise.exercise_name}
-                                        {/* {console.log(exercise)} */}
                                     </div>
-                                    {/* <br /> */}
                                     <div className={styles.exerciseNotes}>
                                         {parse(draftToHtml(JSON.parse(exercise.notes)))}
                                         {/* {exercise.notes !== null && parse(draftToHtml(JSON.parse(exercise.notes))) || ""} */}
