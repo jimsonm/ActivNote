@@ -50,8 +50,6 @@ function ExerciseContainer() {
         displayDetails(redirectedExercise)
     }
 
-    const zzzz = '<p>kdosakdakfsdfsf<span style="font-size: 72px;">fdfd</span></p>'
-
     return (
         <div className={styles.ExerciseContainer}>
             <NavBar />
