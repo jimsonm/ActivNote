@@ -63,9 +63,7 @@ function ExerciseContainer() {
                                 <div onClick={() => displayDetails(exercise.id)} key={exercise.id} className={styles.exerciseNames}>
                                     <div className={styles.exerciseTitle}>
                                         {exercise.exercise_name}
-                                        {/* {console.log(exercise)} */}
                                     </div>
-                                    {/* <br /> */}
                                     <div className={styles.exerciseNotes}>
                                         {parse(draftToHtml(JSON.parse(exercise.notes)))}
                                         {/* {exercise.notes !== null && parse(draftToHtml(JSON.parse(exercise.notes))) || ""} */}
