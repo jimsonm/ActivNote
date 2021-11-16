@@ -20,7 +20,7 @@ function ExerciseForm({setShowModal, setChosen, setCreateExercise}) {
             const payload = {
                 exercise_name,
                 calories_burned: 0,
-                notes,
+                'notes': `{"blocks":[{"key":"t76n","text":"${notes}","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}}`,
                 user_id: userId
             }
             await dispatch(addExercise(payload))
@@ -32,7 +32,7 @@ function ExerciseForm({setShowModal, setChosen, setCreateExercise}) {
             const payload = {
                 exercise_name,
                 calories_burned,
-                notes,
+                'notes': `{"blocks":[{"key":"t76n","text":"${notes}","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}}`,
                 user_id: userId
             }
             const data = await dispatch(addExercise(payload))

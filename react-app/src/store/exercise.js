@@ -35,7 +35,7 @@ export const getExerciseById = (exerciseId) => async (dispatch) => {
     const response = await fetch(`/api/exercises/${exerciseId}`)
     if (response.ok) {
         const exercise = await response.json()
-        return exercise
+        return exercise;
     }
 }
 
