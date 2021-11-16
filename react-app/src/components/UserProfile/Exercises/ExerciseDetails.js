@@ -28,15 +28,12 @@ function ExerciseDetails({ exercise, setCurrentExercise, setSelected, isForm, se
     const updateRichText = async (state) => {
         await setEditorState(state);
         const data = convertToRaw(editorState.getCurrentContent());
-        console.log(data);
     };
 
     const updateExercise = async (e) => {
         e.preventDefault();
-        // console.log(convertToRaw(editorState.getCurrentContent()));
         const data = convertToRaw(editorState.getCurrentContent());
-        const data2 = draftToHtml(data);
-        console.log(data2);
+        // const data2 = draftToHtml(data);
         if (!Number(calories) && calories !== 0) {
             setErrors(["Please input an integer for the calories burned/min."])
         } else {

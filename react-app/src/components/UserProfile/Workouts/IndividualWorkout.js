@@ -26,11 +26,9 @@ function IndividualWorkout({ workout }) {
     const [totalDuration, setTotalDuration] = useState(0);
 
     useEffect(() => {
-        console.log('activities', activities)
         let totalCal = 0;
         let totalDur = 0;
         if (exercises !== {} && activities.length > 0 && current !== {}) {
-            console.log('exe', exercises, 'act', activities, 'cur', current)
             activities.forEach(activity => {
                 let duration = activity.duration;
                 let activityCal = (duration * exercises[activity.exercise_id]['calories_burned']);
