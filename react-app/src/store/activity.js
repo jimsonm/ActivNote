@@ -83,7 +83,6 @@ export default function reducer(state = initialState, action) {
     let newState;
     switch (action.type) {
         case SET_ACTIVITES:
-            // newState = { ...state }
             newState = {}    
             action.payload.activities.forEach((activity) => {
                 newState[activity.id] = activity;

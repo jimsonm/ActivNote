@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { FaRegEdit, FaSave, FaTrashAlt } from "react-icons/fa";
 import { GoTriangleRight, GoTriangleDown } from "react-icons/go";
 import ActivityContainer from './ActivityContainer';
-// import { getWorkoutById } from '../../../store/workout'
 import { getActivities } from "../../../store/activity";
 import { clearCurrentValues, getCurrentWorkout } from '../../../store/current';
 import { deleteWorkout, editWorkout } from '../../../store/workout';
@@ -41,7 +40,7 @@ function IndividualWorkout({ workout }) {
             setTotalCalories(0)
             setTotalDuration(0)
         }
-    }, [current])
+    }, [current, activities, exercises])
 
     useEffect(() => {
         dispatch(getExercises(userId))
@@ -64,11 +63,6 @@ function IndividualWorkout({ workout }) {
         } else if (showIcons && currWorkoutId === workout.id && !showActivities) {
             setShowIcons(false)
         }
-        // console.log(activities);
-        // else if (showIcons && currWorkoutId === workout.id && showActivities) {
-        //     setShowIcons(false)
-        // }
-        //false and matching will display icons
     }
 
     const removeWorkout = async () => {
