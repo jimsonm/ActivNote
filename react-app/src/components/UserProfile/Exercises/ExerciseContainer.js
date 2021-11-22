@@ -6,7 +6,7 @@ import ExerciseDetails from './ExerciseDetails';
 import styles from '../../../css-modules/ExerciseContainer.module.css';
 import NavBar from '../Navbar';
 import { redirected } from '../../../store/current';
-import { EditorState, convertFromRaw, convertToRaw } from 'draft-js';
+import { EditorState, convertFromRaw } from 'draft-js';
 import draftToHtml from 'draftjs-to-html';
 import parse from 'html-react-parser';
 
@@ -66,29 +66,6 @@ function ExerciseContainer() {
                                     </div>
                                     <div className={styles.exerciseNotes}>
                                         {parse(draftToHtml(JSON.parse(exercise.notes)))}
-                                        {/* {exercise.notes !== null && parse(draftToHtml(JSON.parse(exercise.notes))) || ""} */}
-                                        {/* {console.log(exercise.notes)} */}
-                                        {/* {parse(zzzz)} */}
-                                        {/* {parse(exercise.notes)} */}
-                                        {/* {console.log(typeof(exercise.notes))} */}
-                                        {/* {typeof exercise.notes === 'obj' ? parse(draftToHtml(JSON.parse(exercise.notes))) : parse(exercise.notes)} */}
-                                        {/* {typeof exercise.notes === 'string' ? parse(draftToHtml(JSON.parse(currentExercise.notes))) : parse(draftToHtml(JSON.parse(exercise.notes)))} */}
-
-
-                                        {/* <Editor
-                                            // editorState={() =>
-                                            //     EditorState.createEmpty()
-                                            // }
-                                            // toolbarClassName="toolbarClassName"
-                                            // wrapperClassName="wrapperClassName"
-                                            // editorClassName="editorClassName"
-                                            // onEditorStateChange={updateRichText}
-                                            readOnly={true}
-                                            toolbarHidden={true}
-                                            className={styles.NotesInfo}
-                                        /> */}
-                                        {/* {exercise.notes[0] === '{' && JSON.parse(exercise.notes).blocks[0].text} */}
-                                        {/* {draftToHtml(convertToRaw(editorState.getCurrentContent()))} */}
                                     </div>
                                 </div>
                             ))}

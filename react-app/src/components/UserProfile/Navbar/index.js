@@ -30,9 +30,6 @@ function NavBar() {
     }
     return (
         <div className={styles.NavBar}>
-            {/* <div className={styles.NavDiv}>
-                {userProfile.id}
-            </div> */}
             <div className={styles.Nav1}>
             <div className={styles.NavDiv}>
                 <FaUser className={styles.icons}/>

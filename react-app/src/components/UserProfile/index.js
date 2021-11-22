@@ -13,7 +13,6 @@ function User() {
   const [user, setUser] = useState({});
   const { userId } = useParams();
   const dispatch = useDispatch();
-  // const userProfile = useSelector(state => state.session.user)
   const exercises = useSelector(state => Object.values(state.exercise))
 
   useEffect(() => {
